@@ -8,15 +8,15 @@
 
 <script>
 export default {
-  name: "CardFilm",
+  name: 'CardFilm',
   props: {
     film: {
       img: String,
       title: String,
-      score: Number,
-    },
-  },
-};
+      score: Number
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

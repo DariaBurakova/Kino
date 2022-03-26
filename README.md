@@ -1,4 +1,4 @@
-# videotek-vue2
+# videotek
 
 ## Project setup
 ```

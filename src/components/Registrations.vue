@@ -1,6 +1,6 @@
 <template>
-  <div v-if="isVisbile" class="form-registretion-block">
-    <div class="form-registretion">
+  <div v-if="isVisbile" class="form-registration-block">
+    <div class="form-registration">
       <input
         type="text"
         name="name"
@@ -10,50 +10,52 @@
       />
       <input
         type="password"
-        name="pasword"
+        name="password"
         placeholder="Пороль"
         class="input-login"
         v-model="password"
       />
 
-      <button class="butten" @click="onLog">Войти</button>
-      <button class="butten" @click="onClose">
+      <button class="button" @click="onLog">Войти</button>
+      <button class="button" @click="onClose">
         Продолжить без регистрации
       </button>
     </div>
   </div>
 </template>
+
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "App",
+  name: 'App',
   components: {},
   props: {
-    isVisbile: Boolean,
+    isVisbile: Boolean
   },
-  data() {
+  data () {
     return {
-      userName: "",
-      password: "",
-    };
+      userName: '',
+      password: ''
+    }
   },
   methods: {
-    async onLog() {
-      let result = await axios.post("http://localhost:8080/", {
+    async onLog () {
+      const result = await axios.post('http://localhost:8080/', {
         login: this.userName,
-        password: this.password,
-      });
-      console.log(result);
-      this.$emit("VisbileCheng", false);
+        password: this.password
+      })
+      console.log(result)
+      this.$emit('VisbileCheng', false)
     },
-    onClose() {
-      this.$emit("VisbileCheng", false);
-    },
-  },
-};
+    onClose () {
+      this.$emit('VisbileCheng', false)
+    }
+  }
+}
 </script>
+
 <style lang="scss">
-.form-registretion-block {
+.form-registration-block {
   height: auto;
   position: fixed;
   background-color: rgba(44, 44, 44, 0.6);
@@ -62,7 +64,7 @@ export default {
   width: 100%;
   z-index: 10;
 }
-.form-registretion {
+.form-registration {
   display: flex;
   align-content: center;
   justify-content: center;
@@ -70,7 +72,7 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.butten {
+.button {
   padding: 5px;
   background-color: #d66c08;
   border: none;

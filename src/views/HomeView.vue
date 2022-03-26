@@ -6,25 +6,25 @@
 </template>
 
 <script>
-import ListFilms from "@/components/ListFilms";
-import Registration from "../components/Registrations.vue";
+import ListFilms from '@/components/ListFilms'
+import Registration from '../components/Registrations.vue'
 
 export default {
-  name: "HomeView",
+  name: 'HomeView',
 
   components: {
     ListFilms,
-    Registration,
+    Registration
   },
   data: () => ({
-    isVisbile: true,
+    isVisbile: true
   }),
   methods: {
-    VisbileCheng(check) {
-      this.isVisbile = check;
-    },
-  },
-};
+    VisbileCheng (check) {
+      this.isVisbile = check
+    }
+  }
+}
 </script>
 
 <style lang="scss">
