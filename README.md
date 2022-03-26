@@ -1,4 +1,4 @@
-# my-kino
+# videotek-vue2
 
 ## Project setup
 ```

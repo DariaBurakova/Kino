@@ -1,7 +1,6 @@
-
 <template>
   <div class="card">
-    <img :src="film.img" />
+    <img :src="film.img" alt="film" />
     <p class="score">{{ film.score }}</p>
     <p class="title">{{ film.title }}</p>
   </div>
@@ -24,8 +23,8 @@ export default {
 .card {
   position: relative;
 }
-.card:hover{
-   transform: scale(1.02);
+.card:hover {
+  transform: scale(1.02);
 }
 img {
   border-radius: 0 10px 0 10px;
