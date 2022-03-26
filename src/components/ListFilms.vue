@@ -36,7 +36,7 @@ export default {
         {
           id: 3,
           img: require("../assets/everest.jpeg"),
-          title: "Еверест",
+          title: "Эверест",
           score: "7.2",
         },
         {
