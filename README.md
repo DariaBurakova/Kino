@@ -1,4 +1,4 @@
-# my-kino
+# videotek
 
 ## Project setup
 ```

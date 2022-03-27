@@ -1,7 +1,6 @@
-
 <template>
   <div class="card">
-    <img :src="film.img" />
+    <img :src="film.img" alt="film" />
     <p class="score">{{ film.score }}</p>
     <p class="title">{{ film.title }}</p>
   </div>
@@ -9,23 +8,23 @@
 
 <script>
 export default {
-  name: "CardFilm",
+  name: 'CardFilm',
   props: {
     film: {
       img: String,
       title: String,
-      score: Number,
-    },
-  },
-};
+      score: Number
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
 .card {
   position: relative;
 }
-.card:hover{
-   transform: scale(1.02);
+.card:hover {
+  transform: scale(1.02);
 }
 img {
   border-radius: 0 10px 0 10px;
