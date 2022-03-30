@@ -47,12 +47,6 @@ export default {
 </script>
 
 <style>
-.film-page {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  background-color: black;
-  color: white;
-}
-
 .film-data {
   margin: 15px 0;
 }

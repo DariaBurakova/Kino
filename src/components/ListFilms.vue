@@ -109,7 +109,7 @@ export default {
   margin: 200px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 270px);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 15%;
   grid-row-gap: 40px;
 }

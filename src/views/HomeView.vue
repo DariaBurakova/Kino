@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <Registration @VisbileCheng="VisbileCheng" :isVisbile="isVisbile" />
     <ListFilms />
   </div>
@@ -26,11 +26,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  //height: 60vh;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  background-color: black;
-}
-</style>
