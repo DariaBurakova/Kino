@@ -22,6 +22,12 @@
 
 <script>
 import CardFilm from './CardFilm.vue'
+import Avatar from '../assets/avatar.jpeg'
+import Hurry from '../assets/garri.jpeg'
+import Everest from '../assets/everest.jpeg'
+import SnowWhite from '../assets/belo.jpeg'
+import Matrix from '../assets/matrica.jpeg'
+import Spiderman from '../assets/chel.jpeg'
 
 export default {
   name: 'ListFilms',
@@ -31,37 +37,37 @@ export default {
       films: [
         {
           id: 1,
-          img: require('../assets/avatar.jpeg'),
+          img: Avatar,
           title: 'Аватар',
           score: '7.9'
         },
         {
           id: 2,
-          img: require('../assets/garri.jpeg'),
+          img: Hurry,
           title: 'Гарри Поттер и узник азкабана',
           score: '8.6'
         },
         {
           id: 3,
-          img: require('../assets/everest.jpeg'),
+          img: Everest,
           title: 'Эверест',
           score: '7.2'
         },
         {
           id: 4,
-          img: require('../assets/belo.jpeg'),
+          img: SnowWhite,
           title: 'Белоснежка и охотник',
           score: '8.0'
         },
         {
           id: 5,
-          img: require('../assets/matrica.jpeg'),
+          img: Matrix,
           title: 'Матрица',
           score: '8.9'
         },
         {
           id: 6,
-          img: require('../assets/chel.jpeg'),
+          img: Spiderman,
           title: 'Человек паук',
           score: '8.5'
         }
