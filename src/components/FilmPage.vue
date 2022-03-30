@@ -39,13 +39,18 @@
           allowfullscreen
         ></iframe>
       </div>
+      <div class="player-text">Тест локального плеера</div>
+      <div class="player"><player /></div>
     </div>
   </div>
 </template>
 
 <script>
+import Player from './Player.vue'
+
 export default {
   name: 'ListFilms',
+  components: { Player },
   data () {
     return {
       filmData: {
