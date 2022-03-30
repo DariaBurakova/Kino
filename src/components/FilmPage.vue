@@ -1,30 +1,43 @@
 <template>
   <div class="film-page">
     <div class="film-page-content">
-      <div class="poster">
-        <img src="../assets/matrica.jpeg">
-        <p v-if="filmData.age" class="age-boundary">{{ filmData.age }}+</p>
+      <div class="film-data-block">
+        <div class="poster">
+          <img src="../assets/matrica.jpeg">
+          <p v-if="filmData.age" class="age-boundary">{{ filmData.age }}+</p>
+        </div>
+        <div class="film-data">
+          <h1>Матрица</h1>
+          <p v-if="filmData.country">
+            <strong>Страна:</strong> {{ filmData.country }}
+          </p>
+          <p v-if="filmData.year">
+            <strong>Год выпуска:</strong> {{ filmData.year }}
+          </p>
+          <p v-if="filmData.genre">
+            <strong>Жанр:</strong> {{ filmData.genre }}
+          </p>
+          <p v-if="filmData.director">
+            <strong>Режиссёр:</strong> {{ filmData.director }}
+          </p>
+          <p v-if="filmData.actors">
+            <strong>В главных ролях:</strong> {{ filmData.actors }}
+          </p>
+          <p v-if="filmData.description" class="film-page-description">
+            {{ filmData.description }}
+          </p>
+        </div>
       </div>
-      <div class="film-data">
-        <h1>Матрица</h1>
-        <p v-if="filmData.country">
-          <strong>Страна:</strong> {{ filmData.country }}
-        </p>
-        <p v-if="filmData.year">
-          <strong>Год выпуска:</strong> {{ filmData.year }}
-        </p>
-        <p v-if="filmData.genre">
-          <strong>Жанр:</strong> {{ filmData.genre }}
-        </p>
-        <p v-if="filmData.director">
-          <strong>Режиссёр:</strong> {{ filmData.director }}
-        </p>
-        <p v-if="filmData.actors">
-          <strong>В главных ролях:</strong> {{ filmData.actors }}
-        </p>
-        <p v-if="filmData.description" class="film-page-description">
-          {{ filmData.description }}
-        </p>
+      <div class="player-text">Трейлер</div>
+      <div class="player">
+        <iframe
+          width="560"
+          height="315"
+          src="//ok.ru/videoembed/1978843204301"
+          frameborder="0"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </div>
@@ -80,6 +93,9 @@ export default {
   margin: 0 auto;
   padding: 10px 15px;
   width: 1140px;
+}
+
+.film-data-block {
   display: flex;
 }
 
@@ -93,5 +109,17 @@ export default {
   border-radius: 50%;
   padding: 8px 8px;
   font-size: 10pt;
+}
+
+.player-text {
+  display: flex;
+  justify-content: center;
+  margin: 15px 5px;
+  font-size: 18pt;
+}
+
+.player {
+  display: flex;
+  justify-content: center;
 }
 </style>
