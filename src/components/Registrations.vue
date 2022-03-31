@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isVisbile" class="form-registration-block">
+  <div v-if="isVisible" class="form-registration-block">
     <div class="form-registration">
       <input
         type="text"
@@ -11,7 +11,7 @@
       <input
         type="password"
         name="password"
-        placeholder="Пороль"
+        placeholder="Пароль"
         class="input-login"
         v-model="password"
       />
@@ -26,12 +26,10 @@
 
 <script>
 import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  name: 'App',
-  components: {},
-  props: {
-    isVisbile: Boolean
-  },
+  name: 'Registration',
   data () {
     return {
       userName: '',
@@ -39,16 +37,24 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['toggleIsVisible']),
     async onLog () {
       const result = await axios.post('http://localhost:8080/', {
         login: this.userName,
         password: this.password
       })
       console.log(result)
-      this.$emit('VisbileCheng', false)
+      this.$emit('VisibleCheng', false)
     },
     onClose () {
-      this.$emit('VisbileCheng', false)
+      this.toggleIsVisible(false)
+      this.$router.push({ name: 'ListFilm' })
+    }
+  },
+  computed: {
+    ...mapGetters(['getIsVisible']),
+    isVisible () {
+      return this.getIsVisible
     }
   }
 }
@@ -89,7 +95,7 @@ export default {
 .open:hover {
   transform: scale(1.02);
   box-shadow: 0 14px 28px rgba(235, 225, 225, 0.25),
-    0 10px 10px rgba(248, 244, 244, 0.22);
+  0 10px 10px rgba(248, 244, 244, 0.22);
 }
 .input-login {
   background-color: white;
