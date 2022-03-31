@@ -49,6 +49,7 @@ export default {
     },
     onClose () {
       this.$emit('VisbileCheng', false)
+      this.$router.push({ name: 'ListFilm' })
     }
   }
 }

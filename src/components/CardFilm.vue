@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="$router.push({name: 'filmPage' , params: { title: film.title }})">
     <img :src="film.img" alt="film" />
     <p class="score">{{ film.score }}</p>
     <p class="title">{{ film.title }}</p>
@@ -11,9 +11,7 @@ export default {
   name: 'CardFilm',
   props: {
     film: {
-      img: String,
-      title: String,
-      score: Number
+      type: Object
     }
   }
 }
@@ -24,7 +22,7 @@ export default {
   position: relative;
 }
 .card:hover {
-  transform: scale(1.02);
+  transform: scale(1.09);
 }
 img {
   border-radius: 0 10px 0 10px;
@@ -34,9 +32,10 @@ img {
 .title {
   margin-bottom: 0;
   color: #ffffff;
-  font-weight: 300;
+  font-weight: 700;
   padding: 10px;
-  font-size: 25px;
+  font-size: 14pt;
+  text-align: center;
 }
 .score {
   position: absolute;

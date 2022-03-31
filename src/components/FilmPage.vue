@@ -1,13 +1,13 @@
 <template>
   <div class="film-page">
-    <div class="film-page-content">
+    <div class="film-page-content" >
       <div class="film-data-block">
         <div class="poster">
-          <img src="../assets/matrica.jpeg">
+          <img :src="filmData.img"/>
           <p v-if="filmData.age" class="age-boundary">{{ filmData.age }}+</p>
         </div>
         <div class="film-data">
-          <h1>Матрица</h1>
+          <h1>{{ filmData.title }}</h1>
           <p v-if="filmData.country">
             <strong>Страна:</strong> {{ filmData.country }}
           </p>
@@ -44,28 +44,25 @@
     </div>
   </div>
 </template>
-
 <script>
-import Player from './Player.vue'
-
+import films from '../films/films.js'
 export default {
-  name: 'ListFilms',
-  components: { Player },
+  name: 'FilmPages',
   data () {
     return {
-      filmData: {
-        country: 'США',
-        year: '1999',
-        director: 'братья Вачовски',
-        actors: 'Киану Ривз, Лоуренс Фишборн, Керри-Энн Мосс, Хьюго Уивинг, Джо Пантолиано',
-        description: 'Фильм изображает будущее, в котором реальность, существующая для большинства людей, в действительности является симуляцией, созданной разумными машинами, чтобы подчинить и усмирить человечество, в то время как тепло и электрическая активность их тел используются машинами в качестве источника энергии. Немногие люди, высвободившиеся из «мира снов» и выбравшиеся в реальность, вступают в партизанскую войну против машин…',
-        age: '16'
-      }
+      filmData: null
+    }
+  },
+  created () {
+    /* eslint-disable */ 
+    const filmData = films.find(filmData => filmData.title == this.$route.params.title)
+    if (filmData) {
+      this.filmData = filmData
     }
   }
+
 }
 </script>
-
 <style>
 .film-data {
   margin: 15px 0;

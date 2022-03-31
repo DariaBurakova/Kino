@@ -22,56 +22,14 @@
 
 <script>
 import CardFilm from './CardFilm.vue'
-import Avatar from '../assets/avatar.jpeg'
-import Hurry from '../assets/garri.jpeg'
-import Everest from '../assets/everest.jpeg'
-import SnowWhite from '../assets/belo.jpeg'
-import Matrix from '../assets/matrica.jpeg'
-import Spiderman from '../assets/chel.jpeg'
+import films from '../films/films.js'
 
 export default {
   name: 'ListFilms',
   components: { CardFilm },
   data () {
     return {
-      films: [
-        {
-          id: 1,
-          img: Avatar,
-          title: 'Аватар',
-          score: '7.9'
-        },
-        {
-          id: 2,
-          img: Hurry,
-          title: 'Гарри Поттер и узник азкабана',
-          score: '8.6'
-        },
-        {
-          id: 3,
-          img: Everest,
-          title: 'Эверест',
-          score: '7.2'
-        },
-        {
-          id: 4,
-          img: SnowWhite,
-          title: 'Белоснежка и охотник',
-          score: '8.0'
-        },
-        {
-          id: 5,
-          img: Matrix,
-          title: 'Матрица',
-          score: '8.9'
-        },
-        {
-          id: 6,
-          img: Spiderman,
-          title: 'Человек паук',
-          score: '8.5'
-        }
-      ],
+      films,
       items: [
         {
           src: 'https://nigelclarkepresenter.co.uk/reviews/wp-content/uploads/2018/02/BP-08-copy.jpg'
