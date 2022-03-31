@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="$router.push({name: 'filmPage' , params: { title: film.title }})">
+  <div class="card" @click="$router.push({name: 'filmPage' , params: { id: film.id }})">
     <img :src="film.img" alt="film" />
     <p class="score">{{ film.score }}</p>
     <p class="title">{{ film.title }}</p>

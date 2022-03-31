@@ -48,6 +48,7 @@ export default {
     },
     onClose () {
       this.toggleIsVisible(false)
+      this.$router.push({ name: 'ListFilm' })
     }
   },
   computed: {

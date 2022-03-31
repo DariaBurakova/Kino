@@ -64,7 +64,7 @@ export default {
   },
   created () {
     /* eslint-disable */
-    const filmData = this.filmsList.find(filmData => filmData.title == this.$route.params.title)
+    const filmData = this.filmsList.find(filmData => filmData.id == this.$route.params.id)
     if (filmData) {
       this.filmData = filmData
     }
