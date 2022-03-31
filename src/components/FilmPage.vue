@@ -45,9 +45,11 @@
   </div>
 </template>
 <script>
+import Player from './Player.vue'
 import films from '../films/films.js'
 export default {
   name: 'FilmPages',
+  components: { Player },
   data () {
     return {
       filmData: null
