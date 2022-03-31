@@ -1,8 +1,8 @@
 <template>
-  <div class="carusel">
+  <div class="carousel">
     <v-carousel cycle :show-arrows="false">
       <v-carousel-item
-        v-for="(item, i) in items"
+        v-for="(item, i) in carouselList"
         :key="i"
         :src="item.src"
         cover
@@ -11,7 +11,7 @@
     <div class="film-list">
       <CardFilm
         class="films"
-        v-for="film in films"
+        v-for="film in filmsList"
         :key="film.id"
         :film="film"
         :img="film.img"
@@ -22,35 +22,36 @@
 
 <script>
 import CardFilm from './CardFilm.vue'
-import films from '../films/films.js'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'ListFilms',
   components: { CardFilm },
   data () {
     return {
-      films,
-      items: [
-        {
-          src: 'https://nigelclarkepresenter.co.uk/reviews/wp-content/uploads/2018/02/BP-08-copy.jpg'
-        },
-        {
-          src: 'https://www.arthipo.com/image/cache/catalog/poster/movie/1-758/pfilm209-movie-film-poster-batman-begins_5b951e0b-1000x1000.jpg'
-        },
-        {
-          src: 'https://avatars.mds.yandex.net/get-zen_doc/1888829/pub_5d8c753179c26e00ae002ede_5d8cd9120ce57b00ade9d04d/scale_1200'
-        },
-        {
-          src: 'https://www2.bfi.org.uk/sites/bfi.org.uk/files/styles/full/public/image/silent-running-1971-002-poster.jpg?itok=Ho6VqqL5'
-        }
-      ]
     }
+  },
+  methods: {
+    ...mapActions(['fetchFilms', 'fetchCarousel'])
+  },
+  computed: {
+    ...mapGetters(['getFilmsList', 'getCarouselList']),
+    filmsList () {
+      return this.getFilmsList
+    },
+    carouselList () {
+      return this.getCarouselList
+    }
+  },
+  created () {
+    this.fetchFilms()
+    this.fetchCarousel()
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.caruselImg {
+.carouselImg {
   object-fit: cover;
   border-radius: 10px;
   width: 100%;
@@ -58,7 +59,7 @@ export default {
   margin-bottom: 10vh;
 }
 
-.carusel {
+.carousel {
   margin: 0 auto;
 }
 

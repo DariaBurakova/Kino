@@ -23,6 +23,7 @@ export default {
 }
 .card:hover {
   transform: scale(1.09);
+  cursor: pointer;
 }
 img {
   border-radius: 0 10px 0 10px;

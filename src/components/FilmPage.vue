@@ -46,7 +46,8 @@
 </template>
 <script>
 import Player from './Player.vue'
-import films from '../films/films.js'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'FilmPages',
   components: { Player },
@@ -55,9 +56,15 @@ export default {
       filmData: null
     }
   },
+  computed: {
+    ...mapGetters(['getFilmsList']),
+    filmsList () {
+      return this.getFilmsList
+    }
+  },
   created () {
-    /* eslint-disable */ 
-    const filmData = films.find(filmData => filmData.title == this.$route.params.title)
+    /* eslint-disable */
+    const filmData = this.filmsList.find(filmData => filmData.title == this.$route.params.title)
     if (filmData) {
       this.filmData = filmData
     }
