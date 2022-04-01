@@ -23,7 +23,7 @@ const routes = [
     component: ListFilms
   },
   {
-    path: '/films/:id',
+    path: '/films/:route',
     name: 'filmPage',
     component: FilmPage
   }
