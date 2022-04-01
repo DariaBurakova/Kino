@@ -44,6 +44,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import Player from './Player.vue'
 import { mapGetters } from 'vuex'
@@ -64,14 +65,15 @@ export default {
   },
   created () {
     /* eslint-disable */
-    const filmData = this.filmsList.find(filmData => filmData.id == this.$route.params.id)
+    const filmData = this.filmsList.find(filmData => filmData.id == this.$route.params.id);
     if (filmData) {
-      this.filmData = filmData
+      this.filmData = filmData;
+      document.title = 'VIDEOTEK - ' + filmData.title;
     }
   }
-
 }
 </script>
+
 <style>
 .film-data {
   margin: 15px 0;
