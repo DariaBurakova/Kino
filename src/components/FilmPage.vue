@@ -52,7 +52,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'FilmPages',
+  name: 'FilmPage',
   // components: { Player },
   data () {
     return {
