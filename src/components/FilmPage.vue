@@ -28,29 +28,32 @@
           </p>
         </div>
       </div>
-      <div class="player-text">Трейлер</div>
-      <div class="player">
+      <div v-if="filmData.route === 'matrix'" class="player-text">Трейлер</div>
+      <div v-if="filmData.route === 'matrix'" class="player">
         <iframe
           width="560"
           height="315"
-          src="//ok.ru/videoembed/1978843204301"
+          src="https://ok.ru/videoembed/1978843204301"
           frameborder="0"
           allow="autoplay"
           allowfullscreen
         ></iframe>
       </div>
+      <!--
       <div class="player-text">Тест локального плеера</div>
       <div class="player"><player /></div>
+      -->
     </div>
   </div>
 </template>
+
 <script>
-import Player from './Player.vue'
+// import Player from './Player.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'FilmPages',
-  components: { Player },
+  // components: { Player },
   data () {
     return {
       filmData: null
@@ -64,14 +67,15 @@ export default {
   },
   created () {
     /* eslint-disable */
-    const filmData = this.filmsList.find(filmData => filmData.id == this.$route.params.id)
+    const filmData = this.filmsList.find(filmData => filmData.route == this.$route.params.route);
     if (filmData) {
-      this.filmData = filmData
+      this.filmData = filmData;
+      document.title = 'VIDEOTEK - ' + filmData.title;
     }
   }
-
 }
 </script>
+
 <style>
 .film-data {
   margin: 15px 0;
