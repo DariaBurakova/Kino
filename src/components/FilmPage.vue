@@ -70,8 +70,10 @@ export default {
     const filmData = this.filmsList.find(filmData => filmData.route == this.$route.params.route);
     if (filmData) {
       this.filmData = filmData;
-      document.title = 'VIDEOTEK - ' + filmData.title;
     }
+  },
+  beforeMount () {
+    document.title = 'VIDEOTEK - ' + filmData.title;
   }
 }
 </script>
