@@ -6,14 +6,14 @@
           <img :src="filmData.img"/>
         </div>
         <div class="film-data">
-          <h1>{{ filmData.title }}({{ filmData.year }})</h1>
-          <hr class="line">
-           <p v-if="filmData.age" class="age-boundary">{{ filmData.age }}+</p>
+          <h1>{{ filmData.title }} ({{ filmData.year }})</h1>
+          <hr class="line" />
+          <p v-if="filmData.age" class="age-boundary">{{ filmData.age }}+</p>
           <p v-if="filmData.description" class="film-page-description">
             {{ filmData.description }}
           </p>
           <h1>О фильме</h1>
-          <hr class="line">
+          <hr class="line" />
           <p v-if="filmData.country">
             <strong>Страна:</strong> {{ filmData.country }}
           </p>
@@ -26,20 +26,20 @@
           <p v-if="filmData.director">
             <strong>Режиссёр:</strong>
             <ul>
-              <router-link class="routerLink" :to={}>
-                <li v-for="item in filmData.director" :key="item.name" class="liName">{{ item.name }}</li>
-                </router-link>
-              </ul>
+                <li v-for="item in filmData.director" :key="item.name" class="liName">
+                  <router-link class="routerLink">{{ item.name }}</router-link>
+                </li>
+            </ul>
           </p>
           <p v-if="filmData.actors">
             <strong>В главных ролях:</strong>
             <ul>
-              <router-link class="routerLink" :to={}>
-                <li v-for="item in filmData.actors" :key="item.name" class="liName">{{ item.name }}</li>
-                </router-link>
+                <li v-for="item in filmData.actors" :key="item.name" class="liName">
+                  <router-link class="routerLink">{{ item.name }}</router-link>
+                </li>
             </ul>
           </p>
-          <hr class="line">
+          <hr class="line" />
         </div>
       </div>
       <div v-if="filmData.route === 'matrix'" class="player-text">Трейлер</div>
@@ -60,7 +60,7 @@
       -->
       <div class="film-data buttonContainer">
       <h1>Оцените фильм</h1>
-      <hr class="line">
+      <hr class="line" />
       <ul class="listButton">
         <li class="score" v-for="item in reactionFilm" :key="item.id">
           <v-btn color="#EB5804" elevation="11"  variant="outlined"><p style="color:white">{{item.score}}</p></v-btn>
@@ -140,7 +140,7 @@ export default {
   padding-bottom: 6pt;
 }
 .film-data strong { font-size: 15pt; }
-.film-data p { 
+.film-data p {
   font-size: 12pt;
   line-height:1.5;
 }
