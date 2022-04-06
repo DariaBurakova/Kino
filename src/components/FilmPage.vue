@@ -2,11 +2,13 @@
   <div class="film-page">
     <div class="film-page-content" >
       <div class="film-data-block">
-        <div class="poster" v-if="filmData">
+        <div class="left-column" v-if="filmData">
           <img :src="filmData.img"/>
+          <button class="btn">В избранное</button>
         </div>
         <div class="film-data">
           <h1>{{ filmData.title }} ({{ filmData.year }})</h1>
+          <div class="score-block">Рейтинг: <strong>{{ filmData.score }}</strong></div>
           <hr class="line" />
           <p v-if="filmData.age" class="age-boundary">{{ filmData.age }}+</p>
           <p v-if="filmData.description" class="film-page-description">
@@ -15,16 +17,16 @@
           <h1>О фильме</h1>
           <hr class="line" />
           <p v-if="filmData.country">
-            <strong>Страна:</strong> {{ filmData.country }}
+            <em class="parameter">Страна:</em> {{ filmData.country }}
           </p>
           <p v-if="filmData.year">
-            <strong>Год выпуска:</strong> {{ filmData.year }}
+            <em class="parameter">Год выпуска:</em> {{ filmData.year }}
           </p>
           <p v-if="filmData.genre">
-            <strong>Жанр:</strong> {{ filmData.genre }}
+            <em class="parameter">Жанр:</em> {{ filmData.genre }}
           </p>
           <p v-if="filmData.director">
-            <strong>Режиссёр:</strong>
+            <em class="parameter">Режиссёр:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.director" :key="item.name" class="liName">
                   <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
@@ -32,7 +34,7 @@
             </ul>
           </p>
           <p v-if="filmData.actors">
-            <strong>В главных ролях:</strong>
+            <em class="parameter">В главных ролях:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.actors" :key="item.name" class="liName">
                   <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
@@ -128,7 +130,7 @@ export default {
 .line{
   width: 100%;
   height: 3px;
-  color:#EB5804;;
+  color: #EB5804;
   background: linear-gradient(90deg, #EB5804 0%, rgba(0,0,0,0) 90%);
   margin-bottom: 35px;
   border:none;
@@ -142,13 +144,18 @@ export default {
 }
 .film-data {
   margin: 15px 0;
+  position: relative;
 }
 
 .film-data h1 {
   font-size: 25pt;
   padding-bottom: 6pt;
 }
-.film-data strong { font-size: 15pt; }
+.film-data .parameter {
+  font-size: 15pt;
+  font-style: normal;
+  font-weight: bold;
+}
 .film-data p {
   font-size: 12pt;
   line-height:1.5;
@@ -167,9 +174,23 @@ export default {
 
 .data-block p { margin-left: 5px; }
 
-.poster {
+.left-column {
   margin-top:30px;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  border: 1px solid #EB5804;
+  padding: 5px 30px;
+  margin: 20px 30px;
+  color: #EB5804;
+}
+.btn:hover {
+  border: none;
+  background: #EB5804;
+  color: black;
 }
 
 .film-page-content {
@@ -208,15 +229,21 @@ export default {
 
 .routerLink {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 .routerLink:hover {
-   color:#EB5804;
+   color: #EB5804;
 }
-
 
 .buttonContainer{
   margin: 50px auto;
   margin-left: 270px;
+}
+
+.score-block {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 18pt;
 }
 </style>
