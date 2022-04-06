@@ -114,12 +114,12 @@ export default {
   margin-bottom:10px;
 }
 .liName:hover{
-   color:#d66c08
+   color:#EB5804;
 }
 .line{
   width: 100%;
   height: 3px;
-  color:#d66c08;
+  color:#EB5804;;
   background: linear-gradient(90deg, #EB5804 0%, rgba(0,0,0,0) 90%);
   margin-bottom: 35px;
   border:none;
@@ -178,10 +178,10 @@ export default {
   text-align: center;
   font-weight: 900;
   color: white;
-  background-color: red;
-  border-radius: 50%;
+  background-color: #EB5804;
   padding: 8px 8px;
   font-size: 10pt;
+  border-radius: 2px;
   margin-bottom: 10px;
 }
 
@@ -199,9 +199,6 @@ export default {
 .routerLink{
   text-decoration: none;
   color:white;
-}
-.scoreButton:hover{
-  background-color: #d66c08;
 }
 .buttonContainer{
   margin: 50px auto;
