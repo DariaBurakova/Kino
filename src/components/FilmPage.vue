@@ -27,7 +27,7 @@
             <strong>Режиссёр:</strong>
             <ul>
                 <li v-for="item in filmData.director" :key="item.name" class="liName">
-                  <router-link class="routerLink">{{ item.name }}</router-link>
+                  <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
                 </li>
             </ul>
           </p>
@@ -35,7 +35,7 @@
             <strong>В главных ролях:</strong>
             <ul>
                 <li v-for="item in filmData.actors" :key="item.name" class="liName">
-                  <router-link class="routerLink">{{ item.name }}</router-link>
+                  <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
                 </li>
             </ul>
           </p>
