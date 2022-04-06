@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ListFilms from '../components/ListFilms.vue'
-import FilmPage from '../components/FilmPage.vue'
 
 Vue.use(VueRouter)
 
@@ -25,7 +24,7 @@ const routes = [
   {
     path: '/films/:route',
     name: 'filmPage',
-    component: FilmPage
+    component: () => import('../components/FilmPage.vue')
   }
 ]
 

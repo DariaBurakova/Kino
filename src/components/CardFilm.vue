@@ -1,8 +1,10 @@
 <template>
-  <div class="card" @click="$router.push({name: 'filmPage' , params: { route: film.route }})">
+  <div class="card">
+   <router-link :to="{name: 'filmPage' , params: { route: film.route }}" class="routerLink">
     <img :src="film.img" alt="film" />
     <p class="score">{{ film.score }}</p>
     <p class="title">{{ film.title }}</p>
+   </router-link>
   </div>
 </template>
 
@@ -54,5 +56,8 @@ img {
   font-size: 20px;
   border-radius: 0 10px 0 10px;
   opacity: 0.7;
+}
+.routerLink{
+  text-decoration: none;
 }
 </style>

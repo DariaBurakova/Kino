@@ -17,9 +17,11 @@
       />
 
       <button class="button" @click="onLog">Войти</button>
+      <router-link :to="{ name: 'ListFilm' }" class="routerLink">
       <button class="button" @click="onClose">
         Продолжить без регистрации
       </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -48,7 +50,6 @@ export default {
     },
     onClose () {
       this.toggleIsVisible(false)
-      this.$router.push({ name: 'ListFilm' })
     }
   },
   computed: {
@@ -105,5 +106,8 @@ export default {
   height: 25px;
   font-size: 20px;
   font-family: cursive;
+}
+.routerLink{
+  text-decoration: none;
 }
 </style>

@@ -5,7 +5,7 @@
         color="deep-purple accent-4"
         dense
         dark
-        height="50vh"
+        height="60vh"
       >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <img :src="logo" alt="logo" class="nav-logo">
