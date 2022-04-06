@@ -25,7 +25,7 @@
           </p>
           <p v-if="filmData.director">
             <strong>Режиссёр:</strong>
-            <ul>
+            <ul class="inline-ul">
                 <li v-for="item in filmData.director" :key="item.name" class="liName">
                   <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
                 </li>
@@ -33,7 +33,7 @@
           </p>
           <p v-if="filmData.actors">
             <strong>В главных ролях:</strong>
-            <ul>
+            <ul class="inline-ul">
                 <li v-for="item in filmData.actors" :key="item.name" class="liName">
                   <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
                 </li>
@@ -110,12 +110,21 @@ export default {
 <style>
 .liName{
   list-style-type: none;
-  margin-top:10px;
-  margin-bottom:10px;
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.liName:hover{
-   color:#EB5804;
+.liName:not(:last-of-type)::after {
+  content: ', ';
 }
+
+.inline-ul {
+  display: inline;
+}
+.inline-ul::before {
+  content: ' ';
+}
+
 .line{
   width: 100%;
   height: 3px;
@@ -196,10 +205,16 @@ export default {
   display: flex;
   justify-content: center;
 }
-.routerLink{
+
+.routerLink {
   text-decoration: none;
   color:white;
 }
+.routerLink:hover {
+   color:#EB5804;
+}
+
+
 .buttonContainer{
   margin: 50px auto;
   margin-left: 270px;
