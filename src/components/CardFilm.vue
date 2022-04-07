@@ -1,10 +1,8 @@
 <template>
   <div class="card" @click="$router.push({name: 'filmPage' , params: { route: film.route }})">
-    <div class="img"><img :src="film.img" alt="film" /></div>
-    <div class="text">
+    <img :src="film.img" alt="film" />
     <p class="score">{{ film.score }}</p>
     <p class="title">{{ film.title }}</p>
-    </div>
   </div>
 </template>
 
@@ -22,18 +20,13 @@ export default {
 <style scoped lang="scss">
 .card {
   position: relative;
-  margin: 15px auto;
-  display: flex;
-  flex-direction: column;
-  width: 350px;
 }
 .card:hover {
-  transform: scale(0.88);
+  transform: scale(1.09);
   cursor: pointer;
 }
-.img {
-  margin: 0px auto;
-  border-radius: 10px 0 10px 0;;
+img {
+  border-radius: 0 10px 0 10px;
   width: 250px;
   height: 370px;
 }
@@ -41,14 +34,14 @@ export default {
   margin-bottom: 0;
   color: #ffffff;
   font-weight: 700;
+  padding: 10px;
   font-size: 14pt;
-  word-break:break-all;
   text-align: center;
 }
 .score {
   position: absolute;
-  top: 0;
   right: 0;
+  top: 0;
   background-color: #d66c08;
   width: 80px;
   height: 50px;
