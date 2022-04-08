@@ -52,7 +52,7 @@ img {
   color: #ffffff;
   font-weight: 700;
   font-size: 20px;
-  border-radius: 0 10px 0 10px;
+  border-radius: 10px 0 10px 0;
   opacity: 0.7;
 }
 </style>

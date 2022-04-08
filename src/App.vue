@@ -8,8 +8,8 @@
         height="50vh"
       >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <img :src="logo" alt="logo" class="nav-logo">
-      <v-toolbar-title class="logo">VIDEOTEK</v-toolbar-title>
+      <router-link to="/"><img :src="logo" alt="logo" class="nav-logo"></router-link>
+      <v-toolbar-title><router-link to="/" class="logo">VIDEOTEK</router-link></v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -28,6 +28,7 @@
 
 <script>
 import logo from './assets/videotek.jpg'
+
 export default {
   name: 'App',
   beforeCreate () {
@@ -57,5 +58,7 @@ export default {
 .logo {
   font-family: 'Roboto', serif;
   font-weight: 900;
+  text-decoration: none;
+  color: white;
 }
 </style>
