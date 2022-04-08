@@ -33,7 +33,7 @@ export default {
 }
 .img {
   margin: 0px auto;
-  border-radius: 10px 0 10px 0;
+  border-radius: 10px 0 10px 0;;
   width: 250px;
   height: 370px;
 }
