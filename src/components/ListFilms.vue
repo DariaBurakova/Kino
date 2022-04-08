@@ -1,75 +1,101 @@
 <template>
-  <div class="carousel">
-    <v-carousel cycle :show-arrows="false">
-      <v-carousel-item
-        v-for="(item, i) in carouselList"
-        :key="i"
-        :src="item.src"
-        cover
-      ></v-carousel-item>
-    </v-carousel>
+  <div class="film-list-container">
+    <h1 class="header">{{ header }}</h1>
+    <div class="line-box">
+      <hr class="line"/>
+    </div>
     <div class="film-list">
       <CardFilm
-        class="films"
-        v-for="film in filmsList"
-        :key="film.id"
-        :film="film"
-        :img="film.img"
+          class="films"
+          v-for="film in filmsList"
+          :key="film.id"
+          :film="film"
+         :img="film.img"
       />
+    </div>
+    <div class="more-button-container">
+      <button class="more-button" title="Ещё">
+        <div class="my-v-arrow"></div>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 import CardFilm from './CardFilm.vue'
-import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'ListFilms',
-  components: { CardFilm },
-  data () {
-    return {
-    }
-  },
-  methods: {
-    ...mapActions(['fetchFilms', 'fetchCarousel'])
-  },
-  computed: {
-    ...mapGetters(['getFilmsList', 'getCarouselList']),
-    filmsList () {
-      return this.getFilmsList
-    },
-    carouselList () {
-      return this.getCarouselList
-    }
-  },
-  created () {
-    this.fetchFilms()
-    this.fetchCarousel()
-  }
+  props: ['header', 'filmsList'],
+  components: { CardFilm }
 }
 </script>
 
-<style lang="scss" scoped>
-.carouselImg {
-  object-fit: cover;
-  border-radius: 10px;
-  width: 100%;
-  height: 600px;
-  margin-bottom: 10vh;
+<style>
+:root {
+  --color-D: #EB5804;
+  --color-B: #d66c08;
 }
 
-.carousel {
+.film-list-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header {
+  width: 1140px;
+  margin: 40px auto 10px;
+  padding-bottom: 6pt;
+  font-size: 25pt;
+}
+
+.line {
+  height: 3px;
+  color: var(--color-B);
+  background: linear-gradient(90deg, var(--color-D) 0%, black 90%);
+  margin-bottom: 35px;
+  border:none;
+}
+
+.line-box {
+  width: 1140px;
   margin: 0 auto;
 }
 
 .film-list {
   width: 1140px;
-  margin: 200px auto 0;
+  margin: 40px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 270px);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 15%;
   grid-row-gap: 40px;
+}
+
+.more-button-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.more-button {
+  border: 2px solid var(--color-D);
+  border-radius: 10px 0 10px 0;
+  padding: 5px 100px 5px;
+  margin-bottom: 40px;
+}
+
+.my-v-arrow {
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  width: 10px;
+  height: 10px;
+  transform: scaleX(8) scaleY(2) translateY(-3px) rotate(45deg);
+}
+
+.more-button:hover {
+  border-color: black;
+  background-color: var(--color-B);
 }
 </style>

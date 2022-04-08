@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ListFilms from '../components/ListFilms.vue'
+import MainPage from '../components/MainPage.vue'
 import FilmPage from '../components/FilmPage.vue'
 
 Vue.use(VueRouter)
@@ -18,9 +18,9 @@ const routes = [
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/films',
-    name: 'ListFilm',
-    component: ListFilms
+    path: '/main',
+    name: 'MainPage',
+    component: MainPage
   },
   {
     path: '/films/:route',

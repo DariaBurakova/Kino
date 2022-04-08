@@ -134,8 +134,8 @@ export default {
   background: linear-gradient(90deg, #EB5804 0%, rgba(0,0,0,0) 90%);
   margin-bottom: 35px;
   border:none;
-
 }
+
 .listButton{
   list-style: none;
   display: flex;
