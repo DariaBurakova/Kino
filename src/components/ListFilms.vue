@@ -5,18 +5,26 @@
       <hr class="line"/>
     </div>
     <div class="film-list">
-      <CardFilm
-          class="films"
-          v-for="film in filmsList"
-          :key="film.id"
-          :film="film"
-         :img="film.img"
-      />
-    </div>
-    <div class="more-button-container">
-      <button class="more-button" title="Ещё">
-        <div class="my-v-arrow"></div>
-      </button>
+      <v-sheet>
+        <v-slide-group show-arrows dark class="slider-style">
+          <v-slide-item>
+            <v-card>
+              <v-row
+                class="slider-style"
+                align="center"
+                justify="center"
+              >
+                <CardFilm
+                  v-for="film in filmsList"
+                  :key="film.id"
+                  :film="film"
+                  :img="film.img"
+                />
+              </v-row>
+            </v-card>
+          </v-slide-item>
+        </v-slide-group>
+      </v-sheet>
     </div>
   </div>
 </template>
@@ -38,9 +46,8 @@ export default {
 }
 
 .film-list-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  width: 1140px;
+  margin: 0 auto;
 }
 
 .header {
@@ -64,38 +71,15 @@ export default {
 }
 
 .film-list {
-  width: 1140px;
-  margin: 40px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 270px);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 15%;
-  grid-row-gap: 40px;
+  margin: 50px auto;
 }
 
-.more-button-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 50px;
+.slider-sheet-style {
+  max-width: 1140px;
+  color: black;
 }
 
-.more-button {
-  border: 2px solid var(--color-D);
-  border-radius: 10px 0 10px 0;
-  padding: 5px 100px 5px;
-  margin-bottom: 40px;
-}
-
-.my-v-arrow {
-  border-bottom: 1px solid white;
-  border-right: 1px solid white;
-  width: 10px;
-  height: 10px;
-  transform: scaleX(8) scaleY(2) translateY(-3px) rotate(45deg);
-}
-
-.more-button:hover {
-  border-color: black;
-  background-color: var(--color-B);
+.slider-style {
+  background-color: black;
 }
 </style>
