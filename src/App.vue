@@ -10,7 +10,7 @@
       v-model="drawer"
     >
     <div class="listLink">
-    <router-link class="logo link" to="/films"><h1>VIDEOTEK</h1></router-link>
+    <router-link class="logo link" to="/main"><h1>VIDEOTEK</h1></router-link>
     <hr class="line" />
     <router-link class="link" to="/"><p><img :src="filmicon" class="iconList">Фильмы</p></router-link>
     <hr class="line" />
@@ -32,9 +32,9 @@
         height="60vh"
       >
       <v-app-bar-nav-icon @click="drawer =!drawer"></v-app-bar-nav-icon>
-      <router-link to="/"><img :src="logo" alt="logo" class="nav-logo"></router-link>
+      <router-link to="/main"><img :src="logo" alt="logo" class="nav-logo"></router-link>
       <v-toolbar-title>
-        <router-link to="/" class="logo">VIDEOTEK</router-link>
+        <router-link to="/main" class="logo">VIDEOTEK</router-link>
         </v-toolbar-title>
 
       <v-spacer></v-spacer>
