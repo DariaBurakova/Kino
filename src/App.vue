@@ -99,7 +99,7 @@ export default {
     zvezda,
     media,
     newfilm,
-    icons: ['mdi-odnoklassniki', 'mdi-github', 'mdi-linkedin', 'mdi-discord']
+    icons: ['mdi-odnoklassniki', 'mdi-github', 'mdi-trello', 'mdi-discord']
   })
 }
 </script>

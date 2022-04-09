@@ -60,21 +60,21 @@
       <div class="player-text">Тест локального плеера</div>
       <div class="player"><player /></div>
       -->
-
+    <div class="film-data buttonContainer">
       <h1>Оцените фильм</h1>
       <hr class="line" />
-      <v-btn-toggle class="v-btns-container">
+      <div class="v-btns-container">
         <v-btn
           v-for="item in score"
           :key="item"
           color="#EB5804"
           elevation="11"
           variant="outlined"
-          class="v-btn-style"
         >
-          {{ item }}
+         <p style="color:white"> {{ item }}</p>
         </v-btn>
-      </v-btn-toggle>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -245,5 +245,13 @@ export default {
   right: 10px;
   top: 10px;
   font-size: 18pt;
+}
+.buttonContainer{
+  margin: 50px auto;
+  margin-left: 270px;
+}
+.v-btns-container{
+  display: flex;
+  justify-content: space-between;
 }
 </style>
