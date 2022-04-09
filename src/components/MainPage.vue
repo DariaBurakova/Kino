@@ -1,8 +1,8 @@
 <template>
   <div class="main-page">
     <FilmCarousel />
-    <ListFilms header="По рейтингу" filmsList="filmsList" />
-    <ListFilms header="Новые" filmsList="newFilmsList" />
+    <ListFilms header="По рейтингу" :filmsList="filmsList" />
+    <ListFilms header="Новые" :filmsList="newFilmsList" />
   </div>
 </template>
 
