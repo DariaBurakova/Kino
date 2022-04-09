@@ -7,7 +7,7 @@
     <div class="film-list">
       <v-sheet>
         <v-slide-group show-arrows dark class="slider-style">
-          <v-slide-item>
+          <v-slide-item--active>
             <v-card>
               <v-row
                 class="slider-style"
@@ -22,7 +22,7 @@
                 />
               </v-row>
             </v-card>
-          </v-slide-item>
+          </v-slide-item--active>
         </v-slide-group>
       </v-sheet>
     </div>
