@@ -60,22 +60,28 @@
       <div class="player-text">Тест локального плеера</div>
       <div class="player"><player /></div>
       -->
-      <div class="film-data buttonContainer">
+
       <h1>Оцените фильм</h1>
       <hr class="line" />
-      <ul class="listButton">
-        <li class="score" v-for="item in reactionFilm" :key="item.id">
-          <v-btn color="#EB5804" elevation="11"  variant="outlined"><p style="color:white">{{item.score}}</p></v-btn>
-          </li>
-      </ul>
-    </div>
+      <v-btn-toggle class="v-btns-container">
+        <v-btn
+          v-for="item in score"
+          :key="item"
+          color="#EB5804"
+          elevation="11"
+          variant="outlined"
+          class="v-btn-style"
+        >
+          {{ item }}
+        </v-btn>
+      </v-btn-toggle>
     </div>
   </div>
 </template>
 
 <script>
 // import Player from './Player.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'FilmPage',
@@ -85,16 +91,15 @@ export default {
       filmData: null
     }
   },
-  methods: {
-    ...mapActions(['fetchReactionFilm'])
-  },
   computed: {
-    ...mapGetters(['getFilmsList', 'getReactionFilm']),
+    ...mapGetters(['getFilmsList']),
     filmsList () {
       return this.getFilmsList
     },
-    reactionFilm () {
-      return this.getReactionFilm
+    score: () => {
+      const array = []
+      for (let i = 1; i < 11; i++) array.push(i)
+      return array
     }
   },
   created () {
@@ -104,7 +109,6 @@ export default {
       this.filmData = filmData;
       document.title = 'VIDEOTEK - ' + filmData.title;
     }
-    this.fetchReactionFilm()
   }
 }
 </script>
@@ -136,12 +140,12 @@ export default {
   border:none;
 }
 
-.listButton{
+.listButton {
   list-style: none;
   display: flex;
   justify-content: space-between;
-
 }
+
 .film-data {
   margin: 15px 0;
   position: relative;
@@ -234,11 +238,6 @@ export default {
 }
 .routerLink:hover {
    color: #EB5804;
-}
-
-.buttonContainer{
-  margin: 50px auto;
-  margin-left: 270px;
 }
 
 .score-block {
