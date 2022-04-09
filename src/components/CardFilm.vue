@@ -1,13 +1,12 @@
 <template>
   <figure
-    class="card"
-    @click="this.$router.push({name: 'filmPage' , params: { route: film.route }})"
-  >
-    <div class="poster">
+    class="card">
+    <router-link class="routerLink" :to="{name: 'filmPage' , params: { route: film.route }}">
+      <div class="poster">
       <img :src="film.img" alt="film" />
       <p class="score">{{ film.score }}</p>
     </div>
-    <p class="title">{{ film.title }}</p>
+    <p class="title">{{ film.title }}</p>  </router-link>
   </figure>
 </template>
 
