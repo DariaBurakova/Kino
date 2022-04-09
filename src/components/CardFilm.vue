@@ -1,12 +1,12 @@
 <template>
-  <figure
-    class="card">
+  <figure class="card">
     <router-link class="routerLink" :to="{name: 'filmPage' , params: { route: film.route }}">
       <div class="poster">
-      <img :src="film.img" alt="film" />
-      <p class="score">{{ film.score }}</p>
-    </div>
-    <p class="title">{{ film.title }}</p>  </router-link>
+        <img :src="film.img" alt="film" />
+        <p class="score">{{ film.score }}</p>
+      </div>
+      <p class="title">{{ film.title }}</p>
+    </router-link>
   </figure>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style>
 .card {
   transform: scale(0.90);
   margin: 20px 40px;
