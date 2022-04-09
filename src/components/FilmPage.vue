@@ -63,17 +63,18 @@
     <div class="film-data buttonContainer">
       <h1>Оцените фильм</h1>
       <hr class="line" />
-      <div class="v-btns-container">
+        <v-btn-toggle class="v-btns-container">
         <v-btn
           v-for="item in score"
           :key="item"
           color="#EB5804"
           elevation="11"
           variant="outlined"
+          class="v-btn-style"
         >
-         <p style="color:white"> {{ item }}</p>
+          <p style="color:white"> {{ item }}</p>
         </v-btn>
-      </div>
+      </v-btn-toggle>
     </div>
     </div>
   </div>
@@ -249,9 +250,5 @@ export default {
 .buttonContainer{
   margin: 50px auto;
   margin-left: 270px;
-}
-.v-btns-container{
-  display: flex;
-  justify-content: space-between;
 }
 </style>
