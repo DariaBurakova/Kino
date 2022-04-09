@@ -148,6 +148,7 @@ export default {
 }
 
 .film-data h1 {
+  max-width:60%;
   font-size: 25pt;
   padding-bottom: 6pt;
 }
