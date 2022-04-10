@@ -44,17 +44,30 @@
           <hr class="line" />
         </div>
       </div>
-      <div v-if="filmData.route === 'matrix'" class="player-text">Трейлер</div>
-      <div v-if="filmData.route === 'matrix'" class="player">
+      <div
+        v-if="filmData.trailer"
+        class="player-text"
+        @click="isTrailerVisible = ! isTrailerVisible"
+      >
+        Трейлер
+      </div>
+      <div v-if="filmData.trailer" v-show="isTrailerVisible" class="player trailer-show">
         <iframe
-          width="560"
-          height="315"
-          src="https://ok.ru/videoembed/1978843204301"
-          frameborder="0"
+          :width= "filmData.trailer.width"
+          :height="filmData.trailer.height"
+          :src="filmData.trailer.href"
           allow="autoplay"
           allowfullscreen
-        >
-        </iframe>
+        ></iframe>
+      </div>
+      <div v-if="filmData.video" class="player">
+        <iframe
+          :width= "filmData.video.width"
+          :height="filmData.video.height"
+          :src="filmData.video.href"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
       </div>
       <!--
       <div class="player-text">Тест локального плеера</div>
@@ -88,7 +101,8 @@ export default {
   // components: { Player },
   data () {
     return {
-      filmData: null
+      filmData: null,
+      isTrailerVisible: false
     }
   },
   computed: {
@@ -192,6 +206,7 @@ export default {
   margin: 20px 30px;
   color: #EB5804;
 }
+
 .btn:hover {
   border: none;
   background: #EB5804;
@@ -225,6 +240,7 @@ export default {
   justify-content: center;
   margin: 15px 5px;
   font-size: 18pt;
+  cursor: pointer;
 }
 
 .player {
@@ -245,5 +261,20 @@ export default {
   right: 10px;
   top: 10px;
   font-size: 18pt;
+}
+
+.trailer-show {
+  animation-duration: 2s;
+  animation-name: show;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 </style>
