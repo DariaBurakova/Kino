@@ -1,9 +1,13 @@
 <template>
-  <div class="card" @click="$router.push({name: 'filmPage' , params: { route: film.route }})">
-    <img :src="film.img" alt="film" />
-    <p class="score">{{ film.score }}</p>
-    <p class="title">{{ film.title }}</p>
-  </div>
+  <figure class="card">
+    <router-link class="routerLink" :to="{name: 'filmPage' , params: { route: film.route }}">
+      <div class="poster">
+        <img :src="film.img" alt="film" />
+        <p class="score">{{ film.score }}</p>
+      </div>
+      <p class="title">{{ film.title }}</p>
+    </router-link>
+  </figure>
 </template>
 
 <script>
@@ -17,27 +21,30 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style>
 .card {
-  position: relative;
+  transform: scale(0.90);
+  margin: 20px 40px;
 }
+
 .card:hover {
-  transform: scale(1.09);
+  transform: scale(0.95);
   cursor: pointer;
 }
-img {
-  border-radius: 0 10px 0 10px;
-  width: 250px;
-  height: 370px;
+
+.poster {
+  position: relative;
 }
+
 .title {
   margin-bottom: 0;
-  color: #ffffff;
+  color: white;
   font-weight: 700;
-  padding: 10px;
+  padding: 10px 0;
   font-size: 14pt;
   text-align: center;
 }
+
 .score {
   position: absolute;
   right: 0;

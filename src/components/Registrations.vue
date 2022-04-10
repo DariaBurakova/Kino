@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -38,17 +38,20 @@ export default {
   },
   methods: {
     ...mapActions(['toggleIsVisible']),
+    onLog () {},
+    /*
     async onLog () {
       const result = await axios.post('http://localhost:8080/', {
         login: this.userName,
         password: this.password
       })
       console.log(result)
-      this.$emit('VisibleCheng', false)
+      this.$emit('VisibilityChange', false)
     },
+    */
     onClose () {
       this.toggleIsVisible(false)
-      this.$router.push({ name: 'ListFilm' })
+      this.$router.push('/main')
     }
   },
   computed: {
@@ -60,11 +63,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .form-registration-block {
   height: auto;
   position: fixed;
-  background-color: rgba(44, 44, 44, 0.6);
+  background-color: rgba(44, 44, 44, 0.9);
   top: 0;
   bottom: 0;
   width: 100%;

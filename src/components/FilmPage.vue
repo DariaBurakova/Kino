@@ -44,60 +44,79 @@
           <hr class="line" />
         </div>
       </div>
-      <div v-if="filmData.route === 'matrix'" class="player-text">Трейлер</div>
-      <div v-if="filmData.route === 'matrix'" class="player">
+      <div
+        v-if="filmData.trailer"
+        class="player-text"
+        @click="isTrailerVisible = ! isTrailerVisible"
+      >
+        Трейлер
+      </div>
+      <div v-if="filmData.trailer" v-show="isTrailerVisible" class="player trailer-show">
         <iframe
-          width="560"
-          height="315"
-          src="https://ok.ru/videoembed/1978843204301"
-          frameborder="0"
+          :width= "filmData.trailer.width"
+          :height="filmData.trailer.height"
+          :src="filmData.trailer.href"
           allow="autoplay"
           allowfullscreen
-        >
-        </iframe>
+        ></iframe>
+      </div>
+      <div v-if="filmData.video" class="player">
+        <iframe
+          :width= "filmData.video.width"
+          :height="filmData.video.height"
+          :src="filmData.video.href"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
       </div>
       <!--
       <div class="player-text">Тест локального плеера</div>
       <div class="player"><player /></div>
       -->
-      <div class="film-data buttonContainer">
+
       <h1>Оцените фильм</h1>
       <hr class="line" />
-      <ul class="listButton">
-        <li class="score" v-for="item in reactionFilm" :key="item.id">
-          <v-btn color="#EB5804" elevation="11"  variant="outlined"><p style="color:white">{{item.score}}</p></v-btn>
-          </li>
-      </ul>
-    </div>
+      <v-btn-toggle class="v-btns-container">
+        <v-btn
+          v-for="item in score"
+          :key="item"
+          color="#EB5804"
+          elevation="11"
+          variant="outlined"
+          class="v-btn-style"
+        >
+        {{ item }}
+        </v-btn>
+      </v-btn-toggle>
     </div>
   </div>
 </template>
 
 <script>
 // import Player from './Player.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'FilmPage',
   // components: { Player },
   data () {
     return {
-      filmData: null
+      filmData: null,
+      isTrailerVisible: false
     }
   },
-  methods: {
-    ...mapActions(['fetchReactionFilm', 'fetchPerson'])
-  },
   computed: {
-    ...mapGetters(['getFilmsList', 'getReactionFilm', 'getPersonsList']),
+    ...mapGetters(['getFilmsList', 'getPersonsList']),
     filmsList () {
       return this.getFilmsList
     },
-    reactionFilm () {
-      return this.getReactionFilm
-    },
     personsList () {
       return this.getPersonsList
+    },
+    score: () => {
+      const array = []
+      for (let i = 1; i < 11; i++) array.push(i)
+      return array
     }
 
   },
@@ -108,7 +127,6 @@ export default {
       this.filmData = filmData;
       document.title = 'VIDEOTEK - ' + filmData.title;
     }
-    this.fetchReactionFilm()
     this.fetchPerson()
   }
 }
@@ -139,20 +157,21 @@ export default {
   background: linear-gradient(90deg, #EB5804 0%, rgba(0,0,0,0) 90%);
   margin-bottom: 35px;
   border:none;
-
 }
-.listButton{
+
+.listButton {
   list-style: none;
   display: flex;
   justify-content: space-between;
-
 }
+
 .film-data {
   margin: 15px 0;
   position: relative;
 }
 
 .film-data h1 {
+  max-width:60%;
   font-size: 25pt;
   padding-bottom: 6pt;
 }
@@ -192,6 +211,7 @@ export default {
   margin: 20px 30px;
   color: #EB5804;
 }
+
 .btn:hover {
   border: none;
   background: #EB5804;
@@ -225,11 +245,13 @@ export default {
   justify-content: center;
   margin: 15px 5px;
   font-size: 18pt;
+  cursor: pointer;
 }
 
 .player {
   display: flex;
   justify-content: center;
+  margin: 50px 0;
 }
 
 .routerLink {
@@ -240,15 +262,26 @@ export default {
    color: #EB5804;
 }
 
-.buttonContainer{
-  margin: 50px auto;
-  margin-left: 270px;
-}
-
 .score-block {
   position: absolute;
   right: 10px;
   top: 10px;
   font-size: 18pt;
+}
+
+.trailer-show {
+  animation-duration: 2s;
+  animation-name: show;
+  margin-bottom: 50px;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 </style>
