@@ -246,6 +246,7 @@ export default {
 .player {
   display: flex;
   justify-content: center;
+  margin: 50px 0;
 }
 
 .routerLink {
@@ -266,6 +267,7 @@ export default {
 .trailer-show {
   animation-duration: 2s;
   animation-name: show;
+  margin-bottom: 50px;
 }
 
 @keyframes show {
