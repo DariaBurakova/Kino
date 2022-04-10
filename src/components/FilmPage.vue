@@ -29,7 +29,7 @@
             <em class="parameter">Режиссёр:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.director" :key="item.name" class="liName">
-                  <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
+                 <router-link class="routerLink" :to="'/person/'+ item.name">{{ item.name }}</router-link>
                 </li>
             </ul>
           </p>
@@ -37,8 +37,8 @@
             <em class="parameter">В главных ролях:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.actors" :key="item.name" class="liName">
-                  <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
-                </li>
+                  <router-link class="routerLink" :to="'/person/' + item.name">{{ item.name }}</router-link>
+                  </li>
             </ul>
           </p>
           <hr class="line" />
@@ -106,15 +106,19 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getFilmsList']),
+    ...mapGetters(['getFilmsList', 'getPersonsList']),
     filmsList () {
       return this.getFilmsList
+    },
+    personsList () {
+      return this.getPersonsList
     },
     score: () => {
       const array = []
       for (let i = 1; i < 11; i++) array.push(i)
       return array
     }
+
   },
   created () {
     /* eslint-disable */
@@ -123,6 +127,7 @@ export default {
       this.filmData = filmData;
       document.title = 'VIDEOTEK - ' + filmData.title;
     }
+    this.fetchPerson()
   }
 }
 </script>

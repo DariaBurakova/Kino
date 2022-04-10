@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MainPage from '../components/MainPage.vue'
 import FilmPage from '../components/FilmPage.vue'
+import PersonPage from '../components/PersonPage.vue'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,16 @@ const routes = [
     path: '/films/:route',
     name: 'filmPage',
     component: FilmPage
+  },
+  {
+    path: '/person',
+    name: 'PersonPage',
+    component: PersonPage
+  },
+  {
+    path: '/person/:route',
+    name: 'PersonPage',
+    component: PersonPage
   }
 ]
 
