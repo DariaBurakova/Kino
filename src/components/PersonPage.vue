@@ -7,7 +7,7 @@
           <img :src="personData.img" alt="person image"/>
         </div>
         <div class="person-data">
-          <h1>{{ personData.name }} {{ personData.birthday }}</h1>
+          <h1>{{ personData.name }}</h1>
           <hr class="line" />
           <div v-if="personData.description">
             {{personData.description}}
@@ -15,8 +15,8 @@
             <div v-if="personData.birthplace">
             <em class="parameter">Страна:</em> {{ personData.birthplace }}
           </div>
-          <div v-if="(personData.slug === 1)">
-            <em class="parameter">Должность:</em> Режиссер
+          <div v-if="(personData.slug == 1)">
+            <em class="parameter">Должность:</em> Режиссёр
           </div>
           <div v-if="(personData.slug === 2)">
             <em class="parameter">Должность:</em> Актёр
