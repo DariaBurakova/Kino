@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Avatar from '@/assets/avatar.jpeg'
-import Hurry from '@/assets/garri.jpeg'
-import Everest from '@/assets/everest.jpeg'
-import SnowWhite from '@/assets/belo.jpeg'
-import Matrix from '@/assets/matrica.jpeg'
-import Spiderman from '@/assets/chel.jpeg'
-import alfonsocuaron from '@/assets/alfons.jpeg'
-import denielredclif from '@/assets/deniel.webp'
-import jamescameron from '@/assets/cameron.webp'
-import zoi from '@/assets/zoi.jpg'
+import Avatar from '../assets/avatar.jpeg'
+import Hurry from '../assets/garri.jpeg'
+import Everest from '../assets/everest.jpeg'
+import SnowWhite from '../assets/belo.jpeg'
+import Matrix from '../assets/matrica.jpeg'
+import Spiderman from '../assets/chel.jpeg'
+import alfonsocuaron from '../assets/alfons.jpeg'
+import denielredclif from '../assets/deniel.webp'
+import jamescameron from '../assets/cameron.webp'
+import zoi from '../assets/zoi.jpg'
 
 Vue.use(Vuex)
 
@@ -69,7 +69,7 @@ export default new Vuex.Store({
         {
           id: 2,
           img: Hurry,
-          title: 'Гарри Поттер и узник азкабана',
+          title: 'Гарри Поттер и узник Азкабана',
           route: 'hurrypotter-azkaban',
           score: '8.6',
           age: 6,
@@ -133,7 +133,7 @@ export default new Vuex.Store({
           score: '8.9',
           age: 16,
           year: 1999,
-          country: 'США,Австралия',
+          country: 'США, Австралия',
           genre: 'Фантастика, боевик',
           director: [
             { name: 'Братья Вачовски' }
@@ -160,7 +160,7 @@ export default new Vuex.Store({
         {
           id: 6,
           img: Spiderman,
-          title: 'Человек паук',
+          title: 'Человек-паук',
           route: 'spiderman',
           score: '8.5',
           age: 16,
