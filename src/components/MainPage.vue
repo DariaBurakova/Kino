@@ -18,7 +18,7 @@ export default {
     ListFilms
   },
   methods: {
-    ...mapActions(['fetchFilms'])
+    ...mapActions(['fetchFilms', 'fetchPerson'])
   },
   computed: {
     ...mapGetters(['getFilmsList']),
@@ -31,6 +31,7 @@ export default {
   },
   created () {
     this.fetchFilms()
+    this.fetchPerson()
   }
 }
 </script>
