@@ -6,12 +6,17 @@ import Everest from '@/assets/everest.jpeg'
 import SnowWhite from '@/assets/belo.jpeg'
 import Matrix from '@/assets/matrica.jpeg'
 import Spiderman from '@/assets/chel.jpeg'
+import alfonsocuaron from '@/assets/alfons.jpeg'
+import denielredclif from '@/assets/deniel.webp'
+import jamescameron from '@/assets/cameron.webp'
+import zoi from '@/assets/zoi.jpg'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     filmsList: [],
+    personList: [],
     carouselList: [],
     reactionFilm: [],
     isVisible: true
@@ -19,6 +24,9 @@ export default new Vuex.Store({
   mutations: {
     setFilmsList (state, payload) {
       state.filmsList = payload
+    },
+    setPersonList (state, payload) {
+      state.personList = payload
     },
     setCarouselList (state, payload) {
       state.carouselList = payload
@@ -32,6 +40,7 @@ export default new Vuex.Store({
   },
   getters: {
     getFilmsList: state => state.filmsList,
+    getPersonsList: state => state.personList,
     getCarouselList: state => state.carouselList,
     getIsVisible: state => state.isVisible,
     getReactionFilm: state => state.reactionFilm
@@ -152,6 +161,53 @@ export default new Vuex.Store({
             { name: 'Кирстен Данст' }
           ],
           description: 'Школьник-неудачник Питер Паркер становится супергероем. Тоби Магуайр в культовом кинокомиксе Сэма Рэйми.'
+        }
+      ])
+    },
+    fetchPerson ({ commit }) {
+      return commit('setPersonList', [
+        {
+          img: alfonsocuaron,
+          name: 'Альфонсо Куарон',
+          route: 'alfonsocuaron',
+          slug: 1,
+          birthday: '1961',
+          birthplace: 'Мексика',
+          description: 'Mексиканский кинорежиссёр, сценарист, продюсер и монтажёр',
+          status: 'new'
+        },
+        {
+          img: denielredclif,
+          name: 'Дэниел Рэдклифф',
+          route: 'denielredclif',
+          slug: 2,
+          birthday: '1989',
+          birthplace: 'Англия',
+          height: '165',
+          description: 'Британский актёр театра, кино и телевидения, продюсер. Известен как исполнитель роли Гарри Поттера в многолетней серии одноимённых фильмов, снятых по произведениям писательницы Джоан Роулинг.',
+          status: 'new',
+          timestamps: '1999 — настоящее время'
+        },
+        {
+          img: jamescameron,
+          name: 'Джеймс Кэмерон',
+          route: 'jamescameron',
+          slug: 1,
+          birthday: '1954',
+          birthplace: 'Канада',
+          description: 'Кинорежиссёр, наиболее известный по созданию научно-фантастических и эпических фильмов. Кэмерон впервые добился признания за режиссуру фильма «Терминатор»',
+          status: 'new'
+        },
+        {
+          img: zoi,
+          name: 'Зои Салданой',
+          route: 'zoisoldanoi',
+          slug: 2,
+          birthday: '1978',
+          birthplace: 'США',
+          height: '170',
+          description: 'Американская актриса и танцовщица',
+          status: 'new'
         }
       ])
     },

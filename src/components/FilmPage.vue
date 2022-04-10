@@ -29,7 +29,7 @@
             <em class="parameter">Режиссёр:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.director" :key="item.name" class="liName">
-                  <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
+                 <router-link class="routerLink" :to="'/person/'+ item.name">{{ item.name }}</router-link>
                 </li>
             </ul>
           </p>
@@ -37,8 +37,8 @@
             <em class="parameter">В главных ролях:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.actors" :key="item.name" class="liName">
-                  <router-link class="routerLink" to="/films">{{ item.name }}</router-link>
-                </li>
+                  <router-link class="routerLink" :to="'/person/' + item.name">{{ item.name }}</router-link>
+                  </li>
             </ul>
           </p>
           <hr class="line" />
@@ -86,16 +86,20 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchReactionFilm'])
+    ...mapActions(['fetchReactionFilm', 'fetchPerson'])
   },
   computed: {
-    ...mapGetters(['getFilmsList', 'getReactionFilm']),
+    ...mapGetters(['getFilmsList', 'getReactionFilm', 'getPersonsList']),
     filmsList () {
       return this.getFilmsList
     },
     reactionFilm () {
       return this.getReactionFilm
+    },
+    personsList () {
+      return this.getPersonsList
     }
+
   },
   created () {
     /* eslint-disable */
@@ -105,6 +109,7 @@ export default {
       document.title = 'VIDEOTEK - ' + filmData.title;
     }
     this.fetchReactionFilm()
+    this.fetchPerson()
   }
 }
 </script>
