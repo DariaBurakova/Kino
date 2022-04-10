@@ -55,7 +55,7 @@ export default new Vuex.Store({
           genre: 'Фантастика',
           director: [{ name: 'Джеймс Кэмерон' }],
           actors: [
-            { name: 'Зои Салданой' },
+            { name: 'Зои Салдана' },
             { name: 'Сэм Уортингтон' },
             { name: 'Сигурни Уивер' }
           ],
@@ -220,8 +220,8 @@ export default new Vuex.Store({
         },
         {
           img: zoi,
-          name: 'Зои Салданой',
-          route: 'zoisoldanoi',
+          name: 'Зои Салдана',
+          route: 'zoisoldana',
           slug: 2,
           birthday: '1978',
           birthplace: 'США',

@@ -6,13 +6,14 @@
       controls
       width="537"
       height="240">
-      <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
+      <source src="https://youtu.be/CxlRJsQ7p2k" type="video/youtube">
     </video>
   </div>
 </template>
 
 <script>
 import videojs from 'video.js'
+import 'videojs-youtube/dist/Youtube.min.js'
 
 export default {
   name: 'Player',
@@ -49,6 +50,6 @@ export default {
     margin-left: 50px;
     padding: 5px;
     width: 549px;
-    border: 1px solid white;
+    border: 3px solid #EB5804;
   }
 </style>

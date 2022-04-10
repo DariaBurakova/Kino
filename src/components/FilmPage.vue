@@ -3,7 +3,7 @@
     <div class="film-page-content" >
       <div class="film-data-block">
         <div class="left-column" v-if="filmData">
-          <img :src="filmData.img"/>
+          <img :src="filmData.img" alt="film data"/>
           <button class="btn">В избранное</button>
         </div>
         <div class="film-data">
@@ -25,22 +25,22 @@
           <p v-if="filmData.genre">
             <em class="parameter">Жанр:</em> {{ filmData.genre }}
           </p>
-          <p v-if="filmData.director">
+          <div v-if="filmData.director">
             <em class="parameter">Режиссёр:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.director" :key="item.name" class="liName">
                  <router-link class="routerLink" :to="'/person/'+ item.name">{{ item.name }}</router-link>
                 </li>
             </ul>
-          </p>
-          <p v-if="filmData.actors">
+          </div>
+          <div v-if="filmData.actors">
             <em class="parameter">В главных ролях:</em>
             <ul class="inline-ul">
                 <li v-for="item in filmData.actors" :key="item.name" class="liName">
                   <router-link class="routerLink" :to="'/person/' + item.name">{{ item.name }}</router-link>
                   </li>
             </ul>
-          </p>
+          </div>
           <hr class="line" />
         </div>
       </div>
@@ -121,13 +121,11 @@ export default {
 
   },
   created () {
-    /* eslint-disable */
-    const filmData = this.filmsList.find(filmData => filmData.route == this.$route.params.route);
+    const filmData = this.filmsList.find(filmData => filmData.route === this.$route.params.route)
     if (filmData) {
-      this.filmData = filmData;
-      document.title = 'VIDEOTEK - ' + filmData.title;
+      this.filmData = filmData
+      document.title = 'VIDEOTEK - ' + filmData.title
     }
-    this.fetchPerson()
   }
 }
 </script>

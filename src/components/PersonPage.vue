@@ -4,7 +4,7 @@
     <div class="person-page-content">
       <div class="person-data-block">
         <div class="left-column" >
-          <img :src="personData.img" />
+          <img :src="personData.img" alt="person image"/>
         </div>
         <div class="person-data">
           <h1>{{ personData.name }}</h1>
@@ -18,7 +18,7 @@
           <div v-if="(personData.slug == 1)">
             <em class="parameter">Должность:</em> Режиссёр
           </div>
-          <div v-if="(personData.slug == 2)">
+          <div v-if="(personData.slug === 2)">
             <em class="parameter">Должность:</em> Актёр
           </div>
 
@@ -39,7 +39,7 @@
       </div>
     </div>
   </div>
-  <div v-else> <h2>Информация отсутстует</h2> </div>
+  <div v-else> <h2>Информация отсутствует</h2> </div>
 </div>
 </template>
 
@@ -64,10 +64,8 @@ export default {
     }
   },
   created () {
-    this.fetchPerson()
-    /* eslint-disable */
     const personData = this.personsList.find(
-      (personData) => personData.name == this.$route.params.route
+      (personData) => personData.name === this.$route.params.route
     )
     if (personData) {
       this.viz = true
@@ -207,8 +205,7 @@ export default {
 }
 
 .buttonContainer {
-  margin: 50px auto;
-  margin-left: 270px;
+  margin: 50px auto 50px 270px;
 }
 
 .score-block {
