@@ -76,18 +76,19 @@
 
       <h1>Оцените фильм</h1>
       <hr class="line" />
-      <v-btn-toggle class="v-btns-container">
-        <v-btn
-          v-for="item in score"
-          :key="item"
-          color="#EB5804"
-          elevation="11"
-          variant="outlined"
-          class="v-btn-style"
-        >
-        {{ item }}
-        </v-btn>
-      </v-btn-toggle>
+      <div class="btn-toggle">
+        <v-btn-toggle group dark>
+          <v-btn
+            v-for="item in score"
+            :key="item"
+            color="#EB5804"
+            variant="outlined"
+            class="v-btn-style"
+          >
+            {{ item }}
+          </v-btn>
+        </v-btn-toggle>
+      </div>
     </div>
   </div>
 </template>
@@ -271,6 +272,10 @@ export default {
   animation-duration: 2s;
   animation-name: show;
   margin-bottom: 50px;
+}
+.btn-toggle {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes show {
