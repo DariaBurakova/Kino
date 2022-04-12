@@ -1,40 +1,44 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Avatar from '@/assets/avatar.jpeg'
-import Hurry from '@/assets/garri.jpeg'
-import Everest from '@/assets/everest.jpeg'
-import SnowWhite from '@/assets/belo.jpeg'
-import Matrix from '@/assets/matrica.jpeg'
-import Spiderman from '@/assets/chel.jpeg'
+import Avatar from '../assets/avatar.jpeg'
+import Hurry from '../assets/garri.jpeg'
+import Everest from '../assets/everest.jpeg'
+import SnowWhite from '../assets/belo.jpeg'
+import Matrix from '../assets/matrica.jpeg'
+import Spiderman from '../assets/chel.jpeg'
+import alfonsocuaron from '../assets/alfons.jpeg'
+import denielredclif from '../assets/deniel.webp'
+import jamescameron from '../assets/cameron.webp'
+import zoi from '../assets/zoi.jpg'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     filmsList: [],
+    personList: [],
     carouselList: [],
-    reactionFilm: [],
     isVisible: true
   },
   mutations: {
     setFilmsList (state, payload) {
       state.filmsList = payload
     },
+    setPersonList (state, payload) {
+      state.personList = payload
+    },
     setCarouselList (state, payload) {
       state.carouselList = payload
     },
     setIsVisible (state, payload) {
       state.isVisible = payload
-    },
-    setReactionFilm (state, payload) {
-      state.reactionFilm = payload
     }
   },
   getters: {
     getFilmsList: state => state.filmsList,
+    getPersonsList: state => state.personList,
     getCarouselList: state => state.carouselList,
-    getIsVisible: state => state.isVisible,
-    getReactionFilm: state => state.reactionFilm
+    getIsVisible: state => state.isVisible
   },
   actions: {
     fetchFilms ({ commit }) {
@@ -51,16 +55,21 @@ export default new Vuex.Store({
           genre: 'Фантастика',
           director: [{ name: 'Джеймс Кэмерон' }],
           actors: [
-            { name: 'Зои Салданой' },
+            { name: 'Зои Салдана' },
             { name: 'Сэм Уортингтон' },
             { name: 'Сигурни Уивер' }
           ],
-          description: 'По сюжету ресурсодобывающая корпорация угрожает существованию местного племени человекоподобных разумных существ — на’ви.'
+          description: 'По сюжету ресурсодобывающая корпорация угрожает существованию местного племени человекоподобных разумных существ — на’ви.',
+          video: {
+            href: 'https://vk.com/video_ext.php?oid=-166039245&id=456239274&hash=e9b2b4f6f9b6374f&hd=2',
+            width: '853',
+            height: '480'
+          }
         },
         {
           id: 2,
           img: Hurry,
-          title: 'Гарри Поттер и узник азкабана',
+          title: 'Гарри Поттер и узник Азкабана',
           route: 'hurrypotter-azkaban',
           score: '8.6',
           age: 6,
@@ -73,7 +82,12 @@ export default new Vuex.Store({
             { name: 'Руперт Гринт' },
             { name: 'Эмма Уотсон' }
           ],
-          description: 'Третий год учёбы Гарри и его друзей в Хогвартсе.'
+          description: 'Третий год учёбы Гарри и его друзей в Хогвартсе.Беглый маг, тайны прошлого и путешествия во времени. В третьей части поттерианы Альфонсо Куарон сгущает краски',
+          video: {
+            href: 'https://vk.com/video_ext.php?oid=-203784891&id=456240166&hash=b39d0a992522ca19&hd=2',
+            width: '853',
+            height: '480'
+          }
         },
         {
           id: 3,
@@ -119,8 +133,8 @@ export default new Vuex.Store({
           score: '8.9',
           age: 16,
           year: 1999,
-          country: 'США,Австралия',
-          genre: 'Фантастика',
+          country: 'США, Австралия',
+          genre: 'Фантастика, боевик',
           director: [
             { name: 'Братья Вачовски' }
           ],
@@ -131,12 +145,22 @@ export default new Vuex.Store({
             { name: 'Хьюго Уивинг' },
             { name: 'Джо Пантолиано' }
           ],
-          description: 'Фильм изображает будущее, в котором реальность, существующая для большинства людей, в действительности является симуляцией, созданной разумными машинами, чтобы подчинить и усмирить человечество, в то время как тепло и электрическая активность их тел используются машинами в качестве источника энергии. Немногие люди, высвободившиеся из «мира снов» и выбравшиеся в реальность, вступают в партизанскую войну против машин…'
+          description: 'Фильм изображает будущее, в котором реальность, существующая для большинства людей, в действительности является симуляцией, созданной разумными машинами, чтобы подчинить и усмирить человечество, в то время как тепло и электрическая активность их тел используются машинами в качестве источника энергии. Немногие люди, высвободившиеся из «мира снов» и выбравшиеся в реальность, вступают в партизанскую войну против машин…',
+          trailer: {
+            href: 'https://ok.ru/videoembed/1978843204301',
+            width: '560',
+            height: '315'
+          },
+          video: {
+            href: 'https://vk.com/video_ext.php?oid=-195720489&id=456239928&hash=06eb9aaef5411fc1&hd=2',
+            width: '853',
+            height: '480'
+          }
         },
         {
           id: 6,
           img: Spiderman,
-          title: 'Человек паук',
+          title: 'Человек-паук',
           route: 'spiderman',
           score: '8.5',
           age: 16,
@@ -151,7 +175,59 @@ export default new Vuex.Store({
             { name: 'Клифф Робертсон' },
             { name: 'Кирстен Данст' }
           ],
-          description: 'Школьник-неудачник Питер Паркер становится супергероем. Тоби Магуайр в культовом кинокомиксе Сэма Рэйми.'
+          description: 'Школьник-неудачник Питер Паркер становится супергероем. Тоби Магуайр в культовом кинокомиксе Сэма Рэйми.',
+          video: {
+            href: 'https://vk.com/video_ext.php?oid=-20063552&id=456240713&hash=28eeb39b1dd4986e&hd=2',
+            width: '853',
+            height: '480'
+          }
+        }
+      ])
+    },
+    fetchPerson ({ commit }) {
+      return commit('setPersonList', [
+        {
+          img: alfonsocuaron,
+          name: 'Альфонсо Куарон',
+          route: 'alfonsocuaron',
+          slug: 1,
+          birthday: '1961',
+          birthplace: 'Мексика',
+          description: 'Mексиканский кинорежиссёр, сценарист, продюсер и монтажёр',
+          status: 'new'
+        },
+        {
+          img: denielredclif,
+          name: 'Дэниел Рэдклифф',
+          route: 'denielredclif',
+          slug: 2,
+          birthday: '1989',
+          birthplace: 'Англия',
+          height: '165',
+          description: 'Британский актёр театра, кино и телевидения, продюсер. Известен как исполнитель роли Гарри Поттера в многолетней серии одноимённых фильмов, снятых по произведениям писательницы Джоан Роулинг.',
+          status: 'new',
+          timestamps: '1999 — настоящее время'
+        },
+        {
+          img: jamescameron,
+          name: 'Джеймс Кэмерон',
+          route: 'jamescameron',
+          slug: 1,
+          birthday: '1954',
+          birthplace: 'Канада',
+          description: 'Кинорежиссёр, наиболее известный по созданию научно-фантастических и эпических фильмов. Кэмерон впервые добился признания за режиссуру фильма «Терминатор»',
+          status: 'new'
+        },
+        {
+          img: zoi,
+          name: 'Зои Салдана',
+          route: 'zoisoldana',
+          slug: 2,
+          birthday: '1978',
+          birthplace: 'США',
+          height: '170',
+          description: 'Американская актриса и танцовщица',
+          status: 'new'
         }
       ])
     },
@@ -173,50 +249,6 @@ export default new Vuex.Store({
     },
     toggleIsVisible ({ commit }, payload) {
       commit('setIsVisible', payload)
-    },
-    fetchReactionFilm ({ commit }, payload) {
-      commit('setReactionFilm', [
-        {
-          id: 1,
-          score: 1
-        },
-        {
-          id: 2,
-          score: 2
-        },
-        {
-          id: 3,
-          score: 3
-        },
-        {
-          id: 4,
-          score: 4
-        },
-        {
-          id: 5,
-          score: 5
-        },
-        {
-          id: 6,
-          score: 6
-        },
-        {
-          id: 7,
-          score: 7
-        },
-        {
-          id: 8,
-          score: 8
-        },
-        {
-          id: 9,
-          score: 9
-        },
-        {
-          id: 10,
-          score: 10
-        }
-      ])
     }
   }
 })
