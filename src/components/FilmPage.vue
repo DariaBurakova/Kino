@@ -89,6 +89,7 @@
           </v-btn>
         </v-btn-toggle>
       </div>
+      <Comment :film = filmData.id />
     </div>
   </div>
 </template>
@@ -96,8 +97,10 @@
 <script>
 // import Player from './Player.vue'
 import { mapGetters } from 'vuex'
+import Comment from './Comment.vue'
 
 export default {
+  components: { Comment },
   name: 'FilmPage',
   // components: { Player },
   data () {
