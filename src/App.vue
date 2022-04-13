@@ -12,7 +12,7 @@
     <div class="listLink">
     <router-link class="logo link" to="/main"><h1>VIDEOTEK</h1></router-link>
     <hr class="line" />
-    <router-link class="link" to="/"><p><img :src="filmicon" class="iconList">Фильмы</p></router-link>
+    <router-link class="link" to="/allFilm"><p><img :src="filmicon" class="iconList">Фильмы</p></router-link>
     <hr class="line" />
     <router-link  class="link" to="/"><p><img :src="serials" class="iconList">Сериалы</p></router-link>
     <hr class="line" />
