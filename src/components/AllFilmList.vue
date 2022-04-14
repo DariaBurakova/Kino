@@ -3,8 +3,8 @@
         <h1 @click="show=!show">Жанры кино</h1>
          <hr class="line" />
         <div class="filter" v-show="show">
-            <button class="btn" @click="handlerValue($event)" v-for="(item,index) in buttons"
-            :key="index"  v-bind:value='item'>{{item}}</button>
+            <button class="btn" @click="handlerValue(item)" v-for="(item,index) in genres"
+            :key="index" v-bind:value='item'>{{item.name}}</button>
         </div>
    <div class="films-list">
      <CardFilm
@@ -28,27 +28,28 @@ export default {
   name: 'AllListFilms',
   data () {
     return {
-      buttons: ['Комедии', 'Ужасы', 'Фантастика', 'Триллеры', 'Боевики', 'Фэнтези', 'Мелодрамы', 'Драмы', 'Семейные', 'Исторические', 'Документальные', 'Биографии'],
       show: false
     }
   },
   components: { CardFilm },
   methods: {
-    ...mapActions(['fetchFilms']),
-    handlerValue (e) {
-      const value = e.target.value.toLowerCase()
-      console.log(value)
-      /* this.fetchFilms(value) */
+    ...mapActions(['fetchFilms', 'fetchGenres']),
+    handlerValue (item) {
+      this.fetchFilms(item)
     }
   },
   computed: {
-    ...mapGetters(['getFilmsList']),
+    ...mapGetters(['getFilmsList', 'getGenres']),
     filmsList () {
       return this.getFilmsList
+    },
+    genres () {
+      return this.getGenres
     }
   },
   created () {
     this.fetchFilms()
+    this.fetchGenres()
   }
 }
 </script>
