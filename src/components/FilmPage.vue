@@ -84,6 +84,8 @@
             color="#EB5804"
             variant="outlined"
             class="v-btn-style"
+            :disabled="isVoteDisabled"
+            @click="vote(item)"
           >
             {{ item }}
           </v-btn>
@@ -103,7 +105,19 @@ export default {
   data () {
     return {
       filmData: null,
-      isTrailerVisible: false
+      isTrailerVisible: false,
+      isVoteDisabled: false
+    }
+  },
+  methods: {
+    vote (item) {
+      const data = {
+        vote: item,
+        id: this.filmData.id
+      }
+      console.log(data)
+      localStorage.setItem(this.filmData.id, JSON.stringify(data))
+      this.isVoteDisabled = true
     }
   },
   computed: {
@@ -126,6 +140,10 @@ export default {
     if (filmData) {
       this.filmData = filmData
       document.title = 'VIDEOTEK - ' + filmData.title
+    }
+    const voteData = JSON.parse(localStorage.getItem(this.filmData.id) || '[]')
+    if (voteData.id === this.filmData.id) {
+      this.isVoteDisabled = true
     }
   }
 }

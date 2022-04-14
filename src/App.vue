@@ -1,54 +1,57 @@
 <template>
-  <div class="app">
-    <v-navigation-drawer
-      app
-      left
-      dark
-      absolute
-      temporary
-      height="50%"
-      v-model="drawer"
-    >
-    <div class="listLink">
-    <router-link class="logo link" to="/main"><h1>VIDEOTEK</h1></router-link>
-    <hr class="line" />
-    <router-link class="link" to="/allFilm"><p><img :src="filmicon" class="iconList">Фильмы</p></router-link>
-    <hr class="line" />
-    <router-link  class="link" to="/"><p><img :src="serials" class="iconList">Сериалы</p></router-link>
-    <hr class="line" />
-    <router-link class="link" to="/"><p><img :src="newfilm" class="iconList">Новинки</p></router-link>
-    <hr class="line" />
-    <router-link class="link" to="/"><p><img :src="zvezda" class="iconList">Ваша подборка</p></router-link>
-    <hr class="line" />
-    <router-link class="link" to="/"><p><img :src="media" class="iconList">Медиа</p></router-link>
-    <hr class="line" />
-    </div>
-    </v-navigation-drawer>
-    <v-main>
-      <v-app-bar
-        color="deep-purple accent-4"
-        dense
+  <div class="app wrapper">
+    <div class="main-wrapper">
+      <v-navigation-drawer
+        app
+        left
         dark
-        height="60vh"
+        absolute
+        temporary
+        height="50%"
+        v-model="drawer"
       >
-      <v-app-bar-nav-icon @click="drawer =!drawer"></v-app-bar-nav-icon>
-      <router-link to="/main"><img :src="logo" alt="logo" class="nav-logo"></router-link>
-      <v-toolbar-title>
-        <router-link to="/main" class="logo">VIDEOTEK</router-link>
-        </v-toolbar-title>
+        <div class="listLink">
+          <router-link class="logo link" to="/main"><h1>VIDEOTEK</h1></router-link>
+          <hr class="line" />
+          <router-link class="link" to="/allFilm"><p><img :src="filmicon" class="iconList">Фильмы</p></router-link>
+          <hr class="line" />
+          <router-link  class="link" to="/"><p><img :src="serials" class="iconList">Сериалы</p></router-link>
+          <hr class="line" />
+          <router-link class="link" to="/"><p><img :src="newfilm" class="iconList">Новинки</p></router-link>
+          <hr class="line" />
+          <router-link class="link" to="/"><p><img :src="zvezda" class="iconList">Ваша подборка</p></router-link>
+          <hr class="line" />
+          <router-link class="link" to="/"><p><img :src="media" class="iconList">Медиа</p></router-link>
+          <hr class="line" />
+        </div>
+      </v-navigation-drawer>
+      <v-main>
+        <v-app-bar
+          color="deep-purple accent-4"
+          dense
+          dark
+          height="60vh"
+        >
+          <v-app-bar-nav-icon @click="drawer =!drawer"></v-app-bar-nav-icon>
+          <router-link to="/main"><img :src="logo" alt="logo" class="nav-logo"></router-link>
+          <v-toolbar-title>
+            <router-link to="/main" class="logo">VIDEOTEK</router-link>
+          </v-toolbar-title>
 
-      <v-spacer></v-spacer>
+          <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <router-view/>
-  </v-main>
+          <v-btn icon>
+            <v-icon>mdi-magnify</v-icon>
+          </v-btn>
+        </v-app-bar>
+        <router-view/>
+      </v-main>
+    </div>
+
   <v-footer dark padless>
   <v-card class="lighten-1 white--text text-center flex " flat tile>
    <div class="footer">
@@ -105,6 +108,14 @@ export default {
 </script>
 
 <style>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.main-wrapper {
+  flex-grow: 1;
+}
 .app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   background-color: black;
