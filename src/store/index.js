@@ -18,6 +18,7 @@ export default new Vuex.Store({
     filmsList: [],
     personList: [],
     carouselList: [],
+    commentList: [],
     isVisible: true
   },
   mutations: {
@@ -32,13 +33,20 @@ export default new Vuex.Store({
     },
     setIsVisible (state, payload) {
       state.isVisible = payload
+    },
+    setCommentList (state, payoload) {
+      state.commentList = payoload
+    },
+    addComment (state, payoload) {
+      state.commentList = [payoload, ...state.commentList]
     }
   },
   getters: {
     getFilmsList: state => state.filmsList,
     getPersonsList: state => state.personList,
     getCarouselList: state => state.carouselList,
-    getIsVisible: state => state.isVisible
+    getIsVisible: state => state.isVisible,
+    getCommentList: state => state.commentList
   },
   actions: {
     fetchFilms ({ commit }) {
@@ -249,6 +257,45 @@ export default new Vuex.Store({
     },
     toggleIsVisible ({ commit }, payload) {
       commit('setIsVisible', payload)
+    },
+    fetchComments ({ commit }) {
+      return commit('setCommentList', [
+        {
+          filmId: 1,
+          username: 'Гость1',
+          comment: 'Текст коментария1, Текст коментария1, Текст коментария1, Текст коментария1,Текст коментария1, Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,Текст коментария1,'
+        },
+        {
+          filmId: 2,
+          username: 'Гость8',
+          comment: 'Текст коментария2, Текст коментария2 Текст коментария2, Текст коментария2'
+        },
+        {
+          filmId: 1,
+          username: 'Гость2',
+          comment: 'Текст коментария3'
+        },
+        {
+          filmId: 4,
+          username: 'Гость2',
+          comment: 'Текст коментария4, Текст коментария, Текст коментария, Текст коментария, Текст коментария'
+        },
+        {
+          filmId: 5,
+          username: 'Гость4',
+          comment: 'Текст коментария5, Текст коментария, Текст коментария, Текст коментария, Текст коментария,Текст коментария,Текст коментария'
+        },
+        {
+          filmId: 3,
+          username: 'Гость2',
+          comment: 'Текст коментария6'
+        },
+        {
+          filmId: 2,
+          username: 'Гость1',
+          comment: 'Текст коментария7'
+        }
+      ])
     }
   }
 })

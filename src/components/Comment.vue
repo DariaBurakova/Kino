@@ -3,32 +3,78 @@
 <h1>Отзывы</h1>
   <hr class="line" />
   <div class="comment-box">
-    <div>
+    <div class="h-block">
+      <h3>Имя пользователя: </h3>
       <input type="text" class="input-text" name="username" v-model="username">
     </div>
+    <h3>Сообщение: </h3>
       <textarea name="message"  rows="4" v-model="message" class="input-text input-text-mes"  />
     <button @click="sendComment" class="btnc">Отправить</button>
+  </div>
+  <div>
+    <div v-for="item in commentArray" :key="item.username" class="comment">
+      <h4>{{ item.username }}:</h4>
+      <p>{{item.comment}}</p>
+    </div>
   </div>
   </div>
 </template>
 
 <script>
+// import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
+
   name: 'Comment',
   data () {
     return {
       username: '',
-      message: ''
+      message: '',
+      commentArray: []
     }
   },
   props: {
     film: Number
   },
   methods: {
-    sendComment () {
+    /* async sendComment () {
       console.log(this.film, this.username, this.message)
+      const result = await axios.post('http://localhost:8080/', {
+        filmId: this.film,
+        username: this.username,
+        comment: this.message
+      })
+      console.log(result)
+    }, */
+    sendComment () {
+      clearTimeout()
+      const comment = { filmId: this.film, username: this.username, comment: this.message }
+      this.commentArray = [comment, ...this.commentArray]
+      this.$store.commit('addComment', comment)
+      this.username = ''
+      this.message = ''
+    },
+
+    commentOutput () {
+      // console.log(this.commentList)
+      this.commentArray = this.commentList.filter(item => item.filmId === this.film)
+    },
+
+    ...mapActions(['fetchComments'])
+  },
+  computed: {
+    ...mapGetters(['getCommentList']),
+    commentList () {
+      return this.getCommentList
     }
+  },
+  created () {
+    this.fetchComments()
+    this.commentOutput()
+    // console.log(this.commentArray)
   }
+
 }
 </script>
 
@@ -59,5 +105,12 @@ export default {
 .btnc:hover {
   background: #EB5804;
   color: black; }
-
+.h-block{
+  margin-bottom: 10px;
+}
+.comment {
+  margin: 10px;
+  padding: 5px;
+  border: solid 1px #EB5804
+}
 </style>
