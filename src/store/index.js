@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { mockCarousel, mockFilms, mockGenres, mockPerson } from './mock.js'
+import axios from 'axios'
+
+const srv = 'http://localhost:3003'
 
 Vue.use(Vuex)
 
@@ -38,27 +40,25 @@ export default new Vuex.Store({
   },
   actions: {
     fetchFilms ({ commit }, genre) {
-      return genre
-        ? commit('setFilmsList', mockFilms.filter(
-          film => {
-            console.log(film.genre)
-            console.log(genre)
-            return film.genre.toLowerCase().includes(genre.name.toLowerCase())
-          }
-        ))
-        : commit('setFilmsList', mockFilms)
+      if (genre) {
+        axios
+          .get(srv + '/films/' + genre.route)
+          .then(res => { commit('setFilmsList', res.data) })
+      } else {
+        axios.get(srv + '/films').then(res => { commit('setFilmsList', res.data) })
+      }
     },
     fetchPerson ({ commit }) {
-      return commit('setPersonList', mockPerson)
+      axios.get(srv + '/person').then(res => { commit('setPersonList', res.data) })
     },
     fetchCarousel ({ commit }) {
-      return commit('setCarouselList', mockCarousel)
+      axios.get(srv + '/carousel.json').then(res => { commit('setCarouselList', res.data) })
     },
     toggleIsVisible ({ commit }, payload) {
       commit('setIsVisible', payload)
     },
     fetchGenres ({ commit }) {
-      commit('setGenres', mockGenres)
+      axios.get(srv + '/genres').then(res => { commit('setGenres', res.data) })
     }
   }
 })

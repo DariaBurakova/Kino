@@ -28,16 +28,16 @@
           <div v-if="filmData.director">
             <em class="parameter">Режиссёр:</em>
             <ul class="inline-ul">
-                <li v-for="item in filmData.director" :key="item.name" class="liName">
-                 <router-link class="routerLink" :to="'/person/'+ item.name">{{ item.name }}</router-link>
+                <li v-for="(item, index) in filmData.director" :key="index" class="liName">
+                 <router-link class="routerLink" :to="'/person/'+ item.route">{{ item.name }}</router-link>
                 </li>
             </ul>
           </div>
           <div v-if="filmData.actors">
             <em class="parameter">В главных ролях:</em>
             <ul class="inline-ul">
-                <li v-for="item in filmData.actors" :key="item.name" class="liName">
-                  <router-link class="routerLink" :to="'/person/' + item.name">{{ item.name }}</router-link>
+                <li v-for="(item, index) in filmData.actors" :key="index" class="liName">
+                  <router-link class="routerLink" :to="'/person/' + item.route">{{ item.name }}</router-link>
                   </li>
             </ul>
           </div>

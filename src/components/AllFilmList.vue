@@ -3,8 +3,8 @@
         <h1 @click="show=!show">Жанры кино</h1>
          <hr class="line" />
         <div class="filter" v-show="show">
-            <button class="btn" @click="handlerValue(item)" v-for="(item,index) in genres"
-            :key="index" v-bind:value='item'>{{item.name}}</button>
+            <button class="btn" @click="handlerValue(item)" v-for="(item, index) in genres"
+            :key="index" v-bind:value='item'>{{item.title}}</button>
         </div>
    <div class="films-list">
      <CardFilm

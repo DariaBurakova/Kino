@@ -65,7 +65,7 @@ export default {
   },
   created () {
     const personData = this.personsList.find(
-      (personData) => personData.name === this.$route.params.route
+      (personData) => personData.route === this.$route.params.route
     )
     if (personData) {
       this.viz = true
