@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "route": "fiction",
+    "title": "Фантастика"
+  },
+  {
+    "id": "2",
+    "route": "fantasy",
+    "title": "Фэнтези"
+  },
+  {
+    "id": "3",
+    "route": "action",
+    "title": "Боевик"
+  },
+  {
+    "id": "4",
+    "route": "adventures",
+    "title": "Приключения"
+  },
+  {
+    "id": "5",
+    "route": "family",
+    "title": "Семейный"
+  },
+  {
+    "id": "6",
+    "route": "drama",
+    "title": "Драма"
+  },
+  {
+    "id": "7",
+    "route": "melodrama",
+    "title": "Мелодрама"
+  },
+  {
+    "id": "8",
+    "route": "thriller",
+    "title": "Триллер"
+  },
+  {
+    "id": "9",
+    "route": "biography",
+    "title": "Биография"
+  },
+  {
+    "id": "10",
+    "route": "comedy",
+    "title": "Комедия"
+  },
+  {
+    "id": "11",
+    "route": "horror",
+    "title": "Ужасы"
+  },
+  {
+    "id": "12",
+    "route": "cartoon",
+    "title": "Мультфильм"
+  },
+  {
+    "id": "13",
+    "route": "detective",
+    "title": "Детектив"
+  },
+  {
+    "id": "14",
+    "route": "war",
+    "title": "Военный"
+  },
+  {
+    "id": "15",
+    "route": "anime",
+    "title": "Аниме"
+  },
+  {
+    "id": "16",
+    "route": "historical",
+    "title": "Исторический"
+  },
+  {
+    "id": "17",
+    "route": "documentary",
+    "title": "Документальный"
+  },
+  {
+    "id": "18",
+    "route": "crime",
+    "title": "Криминал"
+  },
+  {
+    "id": "19",
+    "route": "western",
+    "title": "Вестерн"
+  },
+  {
+    "id": "20",
+    "route": "noir",
+    "title": "Нуар"
+  },
+  {
+    "id": "21",
+    "route": "sports",
+    "title": "Спортивный"
+  },
+  {
+    "id": "22",
+    "route": "short",
+    "title": "Короткометражный"
+  },
+  {
+    "id": "23",
+    "route": "musics",
+    "title": "Музыкальный"
+  },
+  {
+    "id": "24",
+    "route": "musical",
+    "title": "Мюзикл"
+  }
+]
