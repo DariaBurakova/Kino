@@ -34,11 +34,11 @@ export default new Vuex.Store({
     setIsVisible (state, payload) {
       state.isVisible = payload
     },
-    setCommentList (state, payoload) {
-      state.commentList = payoload
+    setCommentList (state, payload) {
+      state.commentList = payload
     },
-    addComment (state, payoload) {
-      state.commentList = [payoload, ...state.commentList]
+    addComment (state, payload) {
+      state.commentList = [payload, ...state.commentList]
     }
   },
   getters: {
@@ -296,6 +296,9 @@ export default new Vuex.Store({
           comment: 'Текст коментария7'
         }
       ])
+    },
+    fetchAddComment ({ commit }, payload) {
+      commit('addComment', payload)
     }
   }
 })

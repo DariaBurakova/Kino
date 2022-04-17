@@ -13,7 +13,7 @@
   </div>
   <div>
     <div v-for="item in commentArray" :key="item.username" class="comment">
-      <h4>{{ item.username }}:</h4>
+      <h4 class="name">{{ item.username }}:</h4>
       <p>{{item.comment}}</p>
     </div>
   </div>
@@ -48,20 +48,18 @@ export default {
       console.log(result)
     }, */
     sendComment () {
-      clearTimeout()
       const comment = { filmId: this.film, username: this.username, comment: this.message }
-      this.commentArray = [comment, ...this.commentArray]
-      this.$store.commit('addComment', comment)
+      this.fetchAddComment(comment)
       this.username = ''
       this.message = ''
+      this.commentOutput()
     },
 
     commentOutput () {
-      // console.log(this.commentList)
       this.commentArray = this.commentList.filter(item => item.filmId === this.film)
     },
 
-    ...mapActions(['fetchComments'])
+    ...mapActions(['fetchComments', 'fetchAddComment'])
   },
   computed: {
     ...mapGetters(['getCommentList']),
@@ -72,7 +70,6 @@ export default {
   created () {
     this.fetchComments()
     this.commentOutput()
-    // console.log(this.commentArray)
   }
 
 }
@@ -111,6 +108,8 @@ export default {
 .comment {
   margin: 10px;
   padding: 5px;
-  border: solid 1px #EB5804
+}
+.name {
+  color:#EB5804;
 }
 </style>
