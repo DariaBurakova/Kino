@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: '/person',
-    name: 'PersonPage',
+    name: 'CommonPersonPage',
     component: PersonPage
   },
   {

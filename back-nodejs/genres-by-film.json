@@ -1,0 +1,22 @@
+[
+  {
+    "filmRoute": "avatar",
+    "genre": ["fiction"]
+  },
+  {
+    "filmRoute": "hurrypotter-azkaban",
+    "genre": ["fantasy"]
+  },
+  {
+    "filmRoute": "everest",
+    "genre": ["thriller"]
+  },
+  {
+    "filmRoute": "snowwhite",
+    "genre": ["fantasy"]
+  },
+  {
+    "filmRoute": "matrix",
+    "genre": ["fiction", "action"]
+  }
+]

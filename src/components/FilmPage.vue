@@ -28,16 +28,16 @@
           <div v-if="filmData.director">
             <em class="parameter">Режиссёр:</em>
             <ul class="inline-ul">
-                <li v-for="item in filmData.director" :key="item.name" class="liName">
-                 <router-link class="routerLink" :to="'/person/'+ item.name">{{ item.name }}</router-link>
+                <li v-for="(item, index) in filmData.director" :key="index" class="liName">
+                 <router-link class="routerLink" :to="'/person/'+ item.route">{{ item.name }}</router-link>
                 </li>
             </ul>
           </div>
           <div v-if="filmData.actors">
             <em class="parameter">В главных ролях:</em>
             <ul class="inline-ul">
-                <li v-for="item in filmData.actors" :key="item.name" class="liName">
-                  <router-link class="routerLink" :to="'/person/' + item.name">{{ item.name }}</router-link>
+                <li v-for="(item, index) in filmData.actors" :key="index" class="liName">
+                  <router-link class="routerLink" :to="'/person/' + item.route">{{ item.name }}</router-link>
                   </li>
             </ul>
           </div>
@@ -96,8 +96,9 @@
 </template>
 
 <script>
+import axios from 'axios'
 // import Player from './Player.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'FilmPage',
@@ -110,6 +111,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['fetchFilmGenres']),
     vote (item) {
       const data = {
         vote: item,
@@ -121,7 +123,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getFilmsList', 'getPersonsList']),
+    ...mapGetters(['getFilmsList', 'getPersonsList', 'getFilmGenres']),
     filmsList () {
       return this.getFilmsList
     },
@@ -141,6 +143,12 @@ export default {
       this.filmData = filmData
       document.title = 'VIDEOTEK - ' + filmData.title
     }
+    axios
+      .get('http://localhost:3003/films/' + this.$route.params.route + '/genres')
+      .then(res => {
+        const genreString = res.data.map(item => item.title.toLowerCase()).join(', ')
+        this.filmData = { ...this.filmData, genre: genreString }
+      })
     const voteData = JSON.parse(localStorage.getItem(this.filmData.id) || '[]')
     if (voteData.id === this.filmData.id) {
       this.isVoteDisabled = true
