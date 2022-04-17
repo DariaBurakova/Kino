@@ -82,4 +82,36 @@ app.get("/films/:route/genres", (req, res) => {
   });
 });
 
+app.get("/films/:route/actors", (req, res) => {
+  fs.readFile("actors-by-film.json", "utf-8", (err, data) => {
+    const actors = JSON.parse(data).find(item => { 
+      return item.filmRoute === req.params.route
+    }).actors
+    fs.readFile("person.json", "utf-8", (err, data) => {
+      const pStruct = actors.map(p => {
+        return JSON.parse(data).find(item => { 
+          return item.route === p
+        })
+      })
+      res.send(JSON.stringify(pStruct))
+    });
+  });
+});
+
+app.get("/films/:route/directors", (req, res) => {
+  fs.readFile("directors-by-film.json", "utf-8", (err, data) => {
+    const directors = JSON.parse(data).find(item => { 
+      return item.filmRoute === req.params.route
+    }).director
+    fs.readFile("person.json", "utf-8", (err, data) => {
+      const pStruct = directors.map(p => {
+        return JSON.parse(data).find(item => { 
+          return item.route === p
+        })
+      })
+      res.send(JSON.stringify(pStruct))
+    });
+  });
+});
+
 app.listen(port, () => console.log(`Listening port ${port}...`));

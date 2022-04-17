@@ -98,7 +98,7 @@
 <script>
 import axios from 'axios'
 // import Player from './Player.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'FilmPage',
@@ -111,7 +111,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchFilmGenres']),
     vote (item) {
       const data = {
         vote: item,
@@ -149,6 +148,12 @@ export default {
         const genreString = res.data.map(item => item.title.toLowerCase()).join(', ')
         this.filmData = { ...this.filmData, genre: genreString }
       })
+    axios
+      .get('http://localhost:3003/films/' + this.$route.params.route + '/actors')
+      .then(res => { this.filmData = { ...this.filmData, actors: res.data } })
+    axios
+      .get('http://localhost:3003/films/' + this.$route.params.route + '/directors')
+      .then(res => { this.filmData = { ...this.filmData, director: res.data } })
     const voteData = JSON.parse(localStorage.getItem(this.filmData.id) || '[]')
     if (voteData.id === this.filmData.id) {
       this.isVoteDisabled = true

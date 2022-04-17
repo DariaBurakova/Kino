@@ -9,17 +9,6 @@
     "age": "18",
     "img": "avatar.jpeg",
     "score": "7.9",
-    "director": [
-      {
-        "name": "Джеймс Кэмерон",
-        "route": "jamescameron"
-      }
-    ],
-    "actors": [
-      { "name": "Зои Салдана", "route": "zoisoldana" },
-      { "name": "Сэм Уортингтон" },
-      { "name": "Сигурни Уивер" }
-    ],
     "video": {
       "href": "https://vk.com/video_ext.php?oid=-166039245&id=456239274&hash=e9b2b4f6f9b6374f&hd=2",
       "width": "853",
@@ -36,20 +25,6 @@
     "age": "6",
     "year": "2004",
     "country": "США, Великобритания",
-    "director": [
-      {
-        "name": "Альфонсо Куарон",
-        "route": "alfonsocuaron"
-      }
-    ],
-    "actors": [
-      {
-        "name": "Дэниел Рэдклифф",
-        "route": "denielredclif"
-      },
-      { "name": "Руперт Гринт" },
-      { "name": "Эмма Уотсон" }
-    ],
     "video": {
       "href": "https://vk.com/video_ext.php?oid=-203784891&id=456240166&hash=b39d0a992522ca19&hd=2",
       "width": "853",
@@ -65,13 +40,7 @@
     "score": "7.2",
     "age": "18",
     "year": "2015",
-    "country": "США, Великобритания",
-    "director": [{ "name": "Балтазар Кормакур" }],
-    "actors": [
-      { "name": "Джейсон Кларк" },
-      { "name": "Джош Бролин" },
-      { "name": "Джейк Джилленхол" }
-    ]
+    "country": "США, Великобритания"
   },
   {
     "id": "4",
@@ -82,13 +51,7 @@
     "score": "8.0",
     "age": "16",
     "year": "2012",
-    "country": "США",
-    "director": [{ "name": "Руперт Сандерс" }],
-    "actors": [
-      { "name": "Кристен Стюарт" },
-      { "name": "Шарлиз Терон" },
-      { "name": "Крис Хемсворт" }
-    ]
+    "country": "США"
   },
   {
     "id": "5",
@@ -100,14 +63,6 @@
     "age": "16",
     "img": "matrica.jpeg",
     "score": "8.9",
-    "director": [{ "name": "Братья Вачовски" }],
-    "actors": [
-      { "name": "Киану Ривз" },
-      { "name": "Лоуренс Фишборн" },
-      { "name": "Керри-Энн Мосс" },
-      { "name": "Хьюго Уивинг" },
-      { "name": "Джо Пантолиано" }
-    ],
     "trailer": {
       "href": "https://ok.ru/videoembed/1978843204301",
       "width": "560",
