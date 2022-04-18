@@ -70,6 +70,16 @@ export default {
       })
       console.log(result)
     }, */
+    textReplacer (text) {
+      return text
+        .replace(/\.\.\./g, '…')
+        .replace(/(^)\x22(\s)/g, '$1»$2')
+        .replace(/(^|\s|\()"/g, '$1«')
+        .replace(/"(;|!|\?|:|\.|…|,|$|\)|\{|\s)/g, '»$1')
+        .replace(/(?<!»,) - /g, ' — ')
+        .replace(/(«[^»]*)«([^»]*)»/g, '$1„$2“')
+    },
+
     sendComment () {
       const dtStr = new Intl
         .DateTimeFormat('ru', { dateStyle: 'short', timeStyle: 'short' })
@@ -77,7 +87,7 @@ export default {
       const comment = {
         filmId: this.film,
         username: this.username,
-        comment: this.message,
+        comment: this.textReplacer(this.message),
         datetime: dtStr,
         id: uuid()
       }
@@ -164,5 +174,6 @@ export default {
 .comment-text {
   text-align: justify;
   color: lightgray;
+  line-height: 150%;
 }
 </style>
