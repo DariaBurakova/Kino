@@ -41,7 +41,7 @@ export default new Vuex.Store({
     getPersonsList: state => state.personList,
     getCarouselList: state => state.carouselList,
     getIsVisible: state => state.isVisible,
-    getCommentList: state => state.commentList
+    getCommentList: state => state.commentList,
     getGenres: state => state.genres
   },
   actions: {
