@@ -33,7 +33,12 @@ export default {
 }
 
 .poster {
+  margin: 0 auto;
+  width: 250px;
   position: relative;
+}
+.poster img{
+  margin: 0 auto;
 }
 
 .title {
@@ -47,7 +52,7 @@ export default {
 
 .score {
   position: absolute;
-  right: 0;
+  right: -20px;
   top: 0;
   background-color: #d66c08;
   width: 80px;
