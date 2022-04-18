@@ -32,9 +32,12 @@
       <button @click="sendComment" class="btnc">Отправить</button>
     </div>
     <div>
-      <div v-for="item in commentArray" :key="item.username" class="comment">
-        <h4 class="name">{{ item.username }}:</h4>
-        <p>{{ item.comment }}</p>
+      <div v-for="item in commentArray" :key="item.id" class="comment">
+        <h4 class="name">
+          {{ item.username }}:
+          <span class="comment-datetime">{{ item.datetime }}</span>
+        </h4>
+        <p class="comment-text">{{ item.comment }}</p>
       </div>
     </div>
   </div>
@@ -137,11 +140,24 @@ export default {
 }
 
 .comment {
-  margin: 10px;
-  padding: 5px;
+  margin: 10px 0;
 }
 
 .name {
   color: #EB5804;
+  position: relative;
+  margin: 5px 0;
+}
+
+.comment-datetime {
+  color: gray;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.comment-text {
+  text-align: justify;
+  color: lightgray;
 }
 </style>
