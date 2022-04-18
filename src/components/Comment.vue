@@ -1,22 +1,42 @@
 <template>
   <div class="c">
-<h1>Отзывы</h1>
-  <hr class="line" />
-  <div class="comment-box">
-    <div class="h-block">
-      <h3>Имя пользователя: </h3>
-      <input type="text" class="input-text" name="username" v-model="username">
+    <h1>Отзывы</h1>
+    <hr class="line"/>
+    <div class="comment-box">
+      <div class="h-block">
+        <!--      <h3>Имя пользователя: </h3>-->
+        <!--      <input type="text" class="input-text" name="username" v-model="username">-->
+        <v-col cols="12" md="12">
+          <v-text-field
+            dark
+            v-model="username"
+            name="username"
+            autocomplete="off"
+            label="Имя пользователя"
+          ></v-text-field>
+        </v-col>
+
+      </div>
+      <!--    <h3>Сообщение: </h3>-->
+      <!--      <textarea name="message"  rows="4" v-model="message" class="input-text input-text-mes"  />-->
+      <v-col cols="12" md="6">
+        <v-textarea
+          name="message"
+          filled
+          dark
+          no-resize
+          label="Сообщение"
+          v-model="message"
+        ></v-textarea>
+      </v-col>
+      <button @click="sendComment" class="btnc">Отправить</button>
     </div>
-    <h3>Сообщение: </h3>
-      <textarea name="message"  rows="4" v-model="message" class="input-text input-text-mes"  />
-    <button @click="sendComment" class="btnc">Отправить</button>
-  </div>
-  <div>
-    <div v-for="item in commentArray" :key="item.username" class="comment">
-      <h4 class="name">{{ item.username }}:</h4>
-      <p>{{item.comment}}</p>
+    <div>
+      <div v-for="item in commentArray" :key="item.username" class="comment">
+        <h4 class="name">{{ item.username }}:</h4>
+        <p>{{ item.comment }}</p>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -48,7 +68,11 @@ export default {
       console.log(result)
     }, */
     sendComment () {
-      const comment = { filmId: this.film, username: this.username, comment: this.message }
+      const comment = {
+        filmId: this.film,
+        username: this.username,
+        comment: this.message
+      }
       this.fetchAddComment(comment)
       this.username = ''
       this.message = ''
@@ -76,40 +100,48 @@ export default {
 </script>
 
 <style lang="scss">
-.comment-box{
+.comment-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.input-text{
+
+.input-text {
   font-size: 20px;
   padding: 5px;
   border: solid 1px;
   margin: 5px;
-  background-color:white;
+  background-color: white;
 
 }
-.input-text-mes{
+
+.input-text-mes {
   resize: none;
   width: -webkit-fill-available;
 }
+
 .btnc {
   border: 1px solid #EB5804;
   padding: 5px 30px;
-  margin: 20px 30px;
+  margin: 10px 10px;
   color: #EB5804;
 }
+
 .btnc:hover {
   background: #EB5804;
-  color: black; }
-.h-block{
+  color: black;
+}
+
+.h-block {
   margin-bottom: 10px;
 }
+
 .comment {
   margin: 10px;
   padding: 5px;
 }
+
 .name {
-  color:#EB5804;
+  color: #EB5804;
 }
 </style>
