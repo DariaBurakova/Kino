@@ -25,7 +25,13 @@
           v-model="message"
         ></v-textarea>
       </v-col>
-      <button @click="sendComment" class="btnc" v-show="username.length > 0">Отправить</button>
+      <button
+        @click="sendComment"
+        class="btnc"
+        v-show="(username.length > 0) && (message.length > 0)"
+      >
+          Отправить
+      </button>
     </div>
     <div>
       <div v-for="item in commentArray" :key="item.id" class="comment">
@@ -137,7 +143,7 @@ export default {
 }
 
 .comment {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .name {
