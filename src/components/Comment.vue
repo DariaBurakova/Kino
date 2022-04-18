@@ -4,8 +4,6 @@
     <hr class="line"/>
     <div class="comment-box">
       <div class="h-block">
-        <!--      <h3>Имя пользователя: </h3>-->
-        <!--      <input type="text" class="input-text" name="username" v-model="username">-->
         <v-col cols="12" md="12">
           <v-text-field
             dark
@@ -17,8 +15,6 @@
         </v-col>
 
       </div>
-      <!--    <h3>Сообщение: </h3>-->
-      <!--      <textarea name="message"  rows="4" v-model="message" class="input-text input-text-mes"  />-->
       <v-col cols="12" md="6">
         <v-textarea
           name="message"
@@ -29,12 +25,21 @@
           v-model="message"
         ></v-textarea>
       </v-col>
-      <button @click="sendComment" class="btnc">Отправить</button>
+      <button
+        @click="sendComment"
+        class="btnc"
+        v-show="(username.length > 0) && (message.length > 0)"
+      >
+          Отправить
+      </button>
     </div>
     <div>
-      <div v-for="item in commentArray" :key="item.username" class="comment">
-        <h4 class="name">{{ item.username }}:</h4>
-        <p>{{ item.comment }}</p>
+      <div v-for="item in commentArray" :key="item.id" class="comment">
+        <h4 class="name">
+          {{ item.username }}:
+          <span class="comment-datetime">{{ item.datetime }}</span>
+        </h4>
+        <p class="comment-text">{{ item.comment }}</p>
       </div>
     </div>
   </div>
@@ -43,9 +48,9 @@
 <script>
 // import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
+import { v4 as uuid } from 'uuid'
 
 export default {
-
   name: 'Comment',
   data () {
     return {
@@ -55,7 +60,7 @@ export default {
     }
   },
   props: {
-    film: Number
+    film: String
   },
   methods: {
     /* async sendComment () {
@@ -67,11 +72,26 @@ export default {
       })
       console.log(result)
     }, */
+    textReplacer (text) {
+      return text
+        .replace(/\.\.\./g, '…')
+        .replace(/(^)\x22(\s)/g, '$1»$2')
+        .replace(/(^|\s|\()"/g, '$1«')
+        .replace(/"(;|!|\?|:|\.|…|,|$|\)|\{|\s)/g, '»$1')
+        .replace(/(?<!»,) - /g, ' — ')
+        .replace(/(«[^»]*)«([^»]*)»/g, '$1„$2“')
+    },
+
     sendComment () {
+      const dtStr = new Intl
+        .DateTimeFormat('ru', { dateStyle: 'short', timeStyle: 'short' })
+        .format(new Date())
       const comment = {
-        filmId: this.film,
+        filmRoute: this.film,
         username: this.username,
-        comment: this.message
+        comment: this.textReplacer(this.message),
+        datetime: dtStr,
+        id: uuid()
       }
       this.fetchAddComment(comment)
       this.username = ''
@@ -80,7 +100,7 @@ export default {
     },
 
     commentOutput () {
-      this.commentArray = this.commentList.filter(item => item.filmId === this.film)
+      this.commentArray = this.commentList.filter(item => item.filmRoute === this.film)
     },
 
     ...mapActions(['fetchComments', 'fetchAddComment'])
@@ -99,25 +119,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .comment-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.input-text {
-  font-size: 20px;
-  padding: 5px;
-  border: solid 1px;
-  margin: 5px;
-  background-color: white;
-
-}
-
-.input-text-mes {
-  resize: none;
-  width: -webkit-fill-available;
 }
 
 .btnc {
@@ -137,11 +143,25 @@ export default {
 }
 
 .comment {
-  margin: 10px;
-  padding: 5px;
+  margin: 20px 0;
 }
 
 .name {
   color: #EB5804;
+  position: relative;
+  margin: 5px 0;
+}
+
+.comment-datetime {
+  color: gray;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.comment-text {
+  text-align: justify;
+  color: lightgray;
+  line-height: 150%;
 }
 </style>

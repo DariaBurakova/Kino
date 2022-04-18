@@ -89,7 +89,7 @@
           </v-btn>
         </v-btn-toggle>
       </div>
-      <Comment :film = filmData.id />
+      <Comment :film="filmData.route" />
     </div>
   </div>
 </template>
