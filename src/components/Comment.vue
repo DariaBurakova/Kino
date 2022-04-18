@@ -4,8 +4,6 @@
     <hr class="line"/>
     <div class="comment-box">
       <div class="h-block">
-        <!--      <h3>Имя пользователя: </h3>-->
-        <!--      <input type="text" class="input-text" name="username" v-model="username">-->
         <v-col cols="12" md="12">
           <v-text-field
             dark
@@ -17,8 +15,6 @@
         </v-col>
 
       </div>
-      <!--    <h3>Сообщение: </h3>-->
-      <!--      <textarea name="message"  rows="4" v-model="message" class="input-text input-text-mes"  />-->
       <v-col cols="12" md="6">
         <v-textarea
           name="message"
@@ -58,7 +54,7 @@ export default {
     }
   },
   props: {
-    film: Number
+    film: String
   },
   methods: {
     /* async sendComment () {
@@ -85,7 +81,7 @@ export default {
         .DateTimeFormat('ru', { dateStyle: 'short', timeStyle: 'short' })
         .format(new Date())
       const comment = {
-        filmId: this.film,
+        filmRoute: this.film,
         username: this.username,
         comment: this.textReplacer(this.message),
         datetime: dtStr,
@@ -98,7 +94,7 @@ export default {
     },
 
     commentOutput () {
-      this.commentArray = this.commentList.filter(item => item.filmId === this.film)
+      this.commentArray = this.commentList.filter(item => item.filmRoute === this.film)
     },
 
     ...mapActions(['fetchComments', 'fetchAddComment'])
@@ -122,20 +118,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.input-text {
-  font-size: 20px;
-  padding: 5px;
-  border: solid 1px;
-  margin: 5px;
-  background-color: white;
-
-}
-
-.input-text-mes {
-  resize: none;
-  width: -webkit-fill-available;
 }
 
 .btnc {
