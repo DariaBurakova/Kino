@@ -46,9 +46,9 @@
 <script>
 // import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
+import { v4 as uuid } from 'uuid'
 
 export default {
-
   name: 'Comment',
   data () {
     return {
@@ -71,10 +71,15 @@ export default {
       console.log(result)
     }, */
     sendComment () {
+      const dtStr = new Intl
+        .DateTimeFormat('ru', { dateStyle: 'short', timeStyle: 'short' })
+        .format(new Date())
       const comment = {
         filmId: this.film,
         username: this.username,
-        comment: this.message
+        comment: this.message,
+        datetime: dtStr,
+        id: uuid()
       }
       this.fetchAddComment(comment)
       this.username = ''
@@ -102,7 +107,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .comment-box {
   display: flex;
   flex-direction: column;
