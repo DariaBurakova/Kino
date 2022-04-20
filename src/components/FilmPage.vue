@@ -98,7 +98,7 @@
 
 <script>
 // import Player from './Player.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Comment from './Comment.vue'
 
 export default {
@@ -118,13 +118,13 @@ export default {
         vote: item,
         id: this.filmData.id
       }
-      console.log(data)
       localStorage.setItem(this.filmData.id, JSON.stringify(data))
       this.isVoteDisabled = true
     }
   },
   computed: {
     ...mapGetters(['getFilmsList', 'getPersonsList']),
+    ...mapActions(['fetchAllFilms']),
     filmsList () {
       return this.getFilmsList
     },
@@ -138,8 +138,10 @@ export default {
     }
 
   },
-  created () {
-    const filmData = this.filmsList.find(filmData => filmData.route === this.$route.params.route)
+  mounted () {
+    this.fetchAllFilms()
+    console.log(this.getFilmsList)
+    const filmData = this.getFilmsList.find(filmData => filmData.route === this.$route.params.route)
     if (filmData) {
       this.filmData = filmData
       document.title = 'VIDEOTEK - ' + filmData.title
