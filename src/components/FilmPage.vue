@@ -1,5 +1,5 @@
 <template>
-  <div class="film-page">
+  <div class="film-page" v-if="filmData">
     <div class="film-page-content" >
       <div class="film-data-block">
         <div class="left-column" v-if="filmData">
@@ -94,11 +94,12 @@
       <Comment :film="filmData.route" />
     </div>
   </div>
+  <div v-else> <h2>Информация отсутствует</h2> </div>
 </template>
 
 <script>
 // import Player from './Player.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import Comment from './Comment.vue'
 
 export default {
@@ -124,7 +125,6 @@ export default {
   },
   computed: {
     ...mapGetters(['getFilmsList', 'getPersonsList']),
-    ...mapActions(['fetchAllFilms']),
     filmsList () {
       return this.getFilmsList
     },
@@ -136,11 +136,8 @@ export default {
       for (let i = 1; i < 11; i++) array.push(i)
       return array
     }
-
   },
   mounted () {
-    this.fetchAllFilms()
-    console.log(this.getFilmsList)
     const filmData = this.getFilmsList.find(filmData => filmData.route === this.$route.params.route)
     if (filmData) {
       this.filmData = filmData

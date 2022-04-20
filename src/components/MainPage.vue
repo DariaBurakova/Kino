@@ -9,16 +9,13 @@
 <script>
 import FilmCarousel from './FilmCarousel.vue'
 import ListFilms from './ListFilms.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'MainPage',
   components: {
     FilmCarousel,
     ListFilms
-  },
-  methods: {
-    ...mapActions(['fetchFilms', 'fetchPerson'])
   },
   computed: {
     ...mapGetters(['getFilmsList']),
@@ -28,10 +25,6 @@ export default {
     newFilmsList () {
       return this.getFilmsList
     }
-  },
-  created () {
-    this.fetchFilms()
-    this.fetchPerson()
   }
 }
 </script>

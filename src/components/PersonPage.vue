@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="person-page" v-if="(viz)">
+  <div class="person-page" v-if="viz">
     <div class="person-page-content">
       <div class="person-data-block">
         <div class="left-column" >

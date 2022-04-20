@@ -49,15 +49,10 @@ export default new Vuex.Store({
       return genre
         ? commit('setFilmsList', mockFilms.filter(
           film => {
-            console.log(film.genre)
-            console.log(genre)
             return film.genre.toLowerCase().includes(genre.name.toLowerCase())
           }
         ))
         : commit('setFilmsList', mockFilms)
-    },
-    fetchAllFilms ({ commit }) {
-      return commit('setFilmsList', mockFilms)
     },
     fetchPerson ({ commit }) {
       return commit('setPersonList', mockPerson)
