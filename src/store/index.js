@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { mockCarousel, mockFilms, mockGenres, mockPerson, mockComments } from './mock.js'
+import { mockCarousel, mockFilms, mockGenres, mockPerson, mockComments, mockNews } from './mock.js'
 
 Vue.use(Vuex)
 
@@ -11,6 +11,7 @@ export default new Vuex.Store({
     carouselList: [],
     commentList: [],
     genres: [],
+    news: [],
     isVisible: true
   },
   mutations: {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     setIsVisible (state, payload) {
       state.isVisible = payload
     },
+    setNews (state, payload) {
+      state.news = payload
+    },
     setGenres (state, payload) {
       state.genres = payload
     },
@@ -40,6 +44,7 @@ export default new Vuex.Store({
     getFilmsList: state => state.filmsList,
     getPersonsList: state => state.personList,
     getCarouselList: state => state.carouselList,
+    getNews: state => state.news,
     getIsVisible: state => state.isVisible,
     getCommentList: state => state.commentList,
     getGenres: state => state.genres
@@ -71,6 +76,9 @@ export default new Vuex.Store({
     },
     fetchGenres ({ commit }) {
       commit('setGenres', mockGenres)
+    },
+    fetchNews ({ commit }) {
+      return commit('setNews', mockNews)
     }
   }
 })
