@@ -86,13 +86,10 @@ import serials from './assets/serials.png'
 import zvezda from './assets/zvezda.png'
 import media from './assets/media.png'
 import newfilm from './assets/newfilm.png'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
-  beforeCreate () {
-    document.body.className = 'app'
-  },
-
   data: () => ({
     drawer: false,
     group: null,
@@ -103,7 +100,17 @@ export default {
     media,
     newfilm,
     icons: ['mdi-odnoklassniki', 'mdi-github', 'mdi-trello', 'mdi-discord']
-  })
+  }),
+  methods: {
+    ...mapActions(['fetchFilms', 'fetchPerson'])
+  },
+  beforeCreate () {
+    document.body.className = 'app'
+  },
+  created () {
+    this.fetchFilms()
+    this.fetchPerson()
+  }
 }
 </script>
 

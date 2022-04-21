@@ -1,5 +1,5 @@
 <template>
-  <div class="film-page">
+  <div class="film-page" v-if="filmData">
     <div class="film-page-content" >
       <div class="film-data-block">
         <div class="left-column" v-if="filmData">
@@ -94,6 +94,7 @@
       <Comment :film="filmData.route" />
     </div>
   </div>
+  <div v-else> <h2>Информация отсутствует</h2> </div>
 </template>
 
 <script>
@@ -118,7 +119,6 @@ export default {
         vote: item,
         id: this.filmData.id
       }
-      console.log(data)
       localStorage.setItem(this.filmData.id, JSON.stringify(data))
       this.isVoteDisabled = true
     }
@@ -136,10 +136,9 @@ export default {
       for (let i = 1; i < 11; i++) array.push(i)
       return array
     }
-
   },
-  created () {
-    const filmData = this.filmsList.find(filmData => filmData.route === this.$route.params.route)
+  mounted () {
+    const filmData = this.getFilmsList.find(filmData => filmData.route === this.$route.params.route)
     if (filmData) {
       this.filmData = filmData
       document.title = 'VIDEOTEK - ' + filmData.title
