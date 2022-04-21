@@ -4,12 +4,15 @@ import Everest from '../assets/everest.jpeg'
 import SnowWhite from '../assets/belo.jpeg'
 import Matrix from '../assets/matrica.jpeg'
 import Spiderman from '../assets/chel.jpeg'
-import Varig from '../assets/varig.jpeg'
-import Fantvar from '../assets/fantvar.jpeg'
-import Xacer from '../assets/xacer.jpeg'
-import Oscar from '../assets/oscar.jpeg'
-import Keri from '../assets/keri.jpeg'
-import Lune from '../assets/lune.jpeg'
+import Varig from '../assets/media/varig.jpeg'
+import Fantvar from '../assets/media/fantvar.jpeg'
+import Xacer from '../assets/media/xacer.jpeg'
+import Oscar from '../assets/media/oscar.jpeg'
+import Keri from '../assets/media/keri.jpeg'
+import Lune from '../assets/media/lune.jpeg'
+import Patic from '../assets/media/patic.jpeg'
+import Fokus from '../assets/media/fokus.jpeg'
+import Puz from '../assets/media/puz.jpeg'
 
 import alfonsocuaron from '../assets/alfons.jpeg'
 import denielredclif from '../assets/deniel.webp'
@@ -368,5 +371,33 @@ export const mockNews = [{
   title: 'Вышли две серии «Лунного рыцаря». Рассказываем, что в них произошло',
   description: 'Обычный лондонец Стивен Грант (Оскар Айзек) работает в сувенирной лавке в историческом музее. Единственная странность в его жизни — провалы в памяти и лунатизм, поэтому перед сном он приковывает себя к постели.',
   datetime: '30 марта'
+}
+]
+export const mockArticles = [{
+  id: 1,
+  img: Patic,
+  router: '',
+  typetitle: 'Интервью',
+  title: 'Роберт Паттинсон: «Мой Бэтмен целыми днями читает Twitter»',
+  description: 'В «Бэтмене» Мэтта Ривза (российский прокат которого отложен на неопределенный срок, но цифровой релиз в мире состоялся) Темный рыцарь защищает Готэм лишь второй год и не до конца понимает, как себя вести.',
+  datetime: '12 апреля'
+},
+{
+  id: 2,
+  img: Puz,
+  router: '',
+  typetitle: 'Рецензия',
+  title: '«Пузырь» Джадда Апатоу: ископаемая комедия о съемках блокбастера',
+  description: '1 апреля на Netflix вышел новый фильм продюсера и режиссера знаменитых кидалт-комедий нулевых — тоже комедия,  но производственная. ',
+  datetime: '1 апреля'
+},
+{
+  id: 3,
+  img: Fokus,
+  router: '',
+  typetitle: 'В фокусе',
+  title: '«Черный краб»: шведская антиутопия про гражданскую войну',
+  description: 'Одна из самых популярных новинок Netflix — фантастическая военная драма «Черный краб» с Нуми Рапас в главной роли. В заснеженной антиутопической Швеции группа солдат перемещается по тонкому льду, чтобы доставить таинственный груз, способный переменить ход гражданской войны.',
+  datetime: ' 30 марта'
 }
 ]

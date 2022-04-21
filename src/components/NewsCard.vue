@@ -2,9 +2,7 @@
     <div>
       <router-link class="routerLink" to='/'>
     <div class="news-card">
-        <div>
-            <img class="news-img" :src="item.img" alt="news">
-        </div>
+            <img class="news-img" :src="item.img" alt="news"/>
         <h2 class="title-news">{{item.title}}</h2>
         <p class="date-news">{{item.datetime}}</p>
     </div>
@@ -24,7 +22,8 @@ export default {
 <style scoped>
 .news-card{
     transform: scale(0.90);
-    height: 320px;
+    width: auto;
+    height: 380px;
     background-color:#DCDCDC;
     display: flex;
     flex-direction: column;
@@ -46,10 +45,10 @@ export default {
     bottom: 4px;
 }
 .news-img{
-    object-fit: contain;
-    width: 350px;
-    height: 200px;
-    margin: 10px auto;
+    width: 100%;
+    object-fit: fill;
+    height: 250px;
+    margin: 0px auto;
 }
 .news-card:hover{
     transform: scale(0.95);
