@@ -45,8 +45,8 @@
         </div>
       </div>
       <div>
-        <SerialWatchLine v-if="isSerial" />
-        <FilmPlayers v-else />
+        <SerialWatchLine v-if="isSerial" :serialData="filmData" />
+        <FilmPlayers v-else :filmData="filmData" />
       </div>
 
       <h1>Оцените фильм</h1>
@@ -73,19 +73,20 @@
 </template>
 
 <script>
-// import Player from './Player.vue'
 import { mapGetters } from 'vuex'
 import Comment from './Comment.vue'
+import SerialWatchLine from './SerialWatchLine.vue'
+import FilmPlayers from './FilmPlayers.vue'
 
 export default {
-  components: { Comment },
+  components: { Comment, SerialWatchLine, FilmPlayers },
   name: 'FilmPage',
-  // components: { Player },
   data () {
     return {
       filmData: null,
       isTrailerVisible: false,
-      isVoteDisabled: false
+      isVoteDisabled: false,
+      isSerial: true
     }
   },
   methods: {

@@ -2,11 +2,17 @@
   <div class="serial-watch-line">
     <div class="seasons">
       Сезоны:
-      <ul class="inline-ul">
-        <li v-for="item in serialData.seasons" :key="item.seasonNumber" class="inline-ul-li">
-          {{ item.seasonNumber }}
-        </li>
-      </ul>
+      <v-btn-toggle group dark>
+        <v-btn
+          v-for="item in [1, 2, 3, 4, 5]"
+          :key="item"
+          color="#EB5804"
+          variant="outlined"
+          class="v-btn-style"
+        >
+          {{ item }}
+        </v-btn>
+      </v-btn-toggle>
     </div>
     <div class="series-list">
       <v-sheet>
@@ -17,6 +23,18 @@
                 align="center"
                 justify="center"
               >
+                  <div v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="item">
+                    <div class="player-card">
+                       <iframe
+                        :width= "videoWidth"
+                        :height="videoHeight"
+                        :src="serialData.video.href"
+                        allow="autoplay"
+                        allowfullscreen
+                        ></iframe>
+                        Серия {{ item }}
+                    </div>
+                  </div>
               </v-row>
             </v-card>
         </v-slide-group>
@@ -29,7 +47,33 @@
 export default {
   name: 'SerialWatchLine',
   props: {
-    serial_id: {}
+    serialData: {
+      type: Object
+    }
+  },
+  data () {
+    return {
+      videoWidth: 0,
+      videoHeight: 0
+    }
+  },
+  mounted () {
+    this.videoWidth = 0.3 * this.serialData.video.width
+    this.videoHeight = 0.3 * this.serialData.video.height
   }
 }
 </script>
+
+<style>
+.seasons {
+  font-size: 15pt;
+  font-weight: bold;
+}
+
+.player-card {
+  padding: 0 40px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+</style>
