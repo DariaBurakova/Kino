@@ -5,6 +5,7 @@ import MainPage from '../components/MainPage.vue'
 import FilmPage from '../components/FilmPage.vue'
 import PersonPage from '../components/PersonPage.vue'
 import AllFilmList from '../components/AllFilmList.vue'
+import Media from '../components/Media.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,11 @@ const routes = [
     path: '/allFilm',
     name: 'AllFilmList',
     component: AllFilmList
+  },
+  {
+    path: '/media',
+    name: 'Media',
+    component: Media
   }
 ]
 
