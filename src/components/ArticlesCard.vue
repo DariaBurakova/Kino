@@ -24,29 +24,31 @@ export default {
 <style scoped>
 .articles-card{
    transform: scale(0.90);
-    width: 600px;
+    width: auto;
     height: 400px;
     background-color:#DCDCDC;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px 0 10px 0;
 }
 .img-articles{
-  width: 100%;
-  object-fit: fill;
-  height: 300px;
-  margin: 0px auto;
+    width: 100%;
+    object-fit: contain;
+    height:auto;
+    margin: 0 auto;
+    border-radius: 10px 0  0;
 }
 .articles-title{
   position: relative;
   color: black;
-  font-size: 14pt;
+  font-size: 13pt;
   padding-bottom: 6pt;
   text-align: center;
 }
 .type-title{
   color: #EB5804;
-  font-size: 16pt;
+  font-size: 11pt;
   padding-bottom: 6pt;
 }
 .articles-date{

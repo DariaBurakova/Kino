@@ -70,8 +70,16 @@ export default {
     width: 1140px;
     margin: 10px auto;
     display: grid;
-    grid-template-columns: 550px 325px 325px;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(1fr);
+    grid-auto-flow: dense;
     grid-gap: 0.5rem;
+}
+.list-cardNews div:nth-child(1){
+ grid-column: span 2;
+}
+.list-cardNews div:nth-child(6){
+ grid-column: span 2;
 }
 .btn-bottom-media{
     display: flex;
@@ -92,10 +100,16 @@ export default {
     background-color: black;
 }
 .list-articles{
+    width: 1140px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(1fr);
+    grid-auto-flow: dense;
+    grid-gap: 0.5rem;
+}
+.list-articles div:nth-child(1){
+    grid-column: span 2;
 }
 .line-media{
     margin: 0 auto;

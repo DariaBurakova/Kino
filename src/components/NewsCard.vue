@@ -29,12 +29,12 @@ export default {
     flex-direction: column;
     align-items: center;
     border-radius: 10px 0 10px 0;
-    border:4px solid #EB5804;
 }
 .title-news{
     position: relative;
     color: black;
-    font-size: 14pt;
+    font-size: 13pt;
+    padding-top: 2pt;
     padding-bottom: 6pt;
     text-align: center;
 }
@@ -46,9 +46,10 @@ export default {
 }
 .news-img{
     width: 100%;
-    object-fit: fill;
-    height: 250px;
+    object-fit: contain;
+    height:auto;
     margin: 0px auto;
+    border-radius: 10px 0  0;
 }
 .news-card:hover{
     transform: scale(0.95);
