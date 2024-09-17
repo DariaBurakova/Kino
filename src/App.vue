@@ -21,7 +21,7 @@
           <hr class="line" />
           <router-link class="link" to="/"><p><img :src="zvezda" class="iconList">Ваша подборка</p></router-link>
           <hr class="line" />
-          <router-link class="link" to="/"><p><img :src="media" class="iconList">Медиа</p></router-link>
+          <router-link class="link" to="/media"><p><img :src="media" class="iconList">Медиа</p></router-link>
           <hr class="line" />
         </div>
       </v-navigation-drawer>
